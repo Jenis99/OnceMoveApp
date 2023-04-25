@@ -25,13 +25,10 @@ class _ProfileImageState extends State<ProfileImage> {
 
   @override
   Widget build(BuildContext context) {
-    print(
-        "selectedfile:------------------ ${profileController.selectedfile.value}");
-
     return Scaffold(
       backgroundColor: ColorRes.backGroundColor,
       body: Padding(
-        padding: const EdgeInsets.only(left: 20.0, right: 20.0).w,
+        padding: EdgeInsets.only(left: 20.0.w, right: 20.0.w),
         child: Column(
           children: [
             Expanded(

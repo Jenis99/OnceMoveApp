@@ -16,7 +16,7 @@ class AccountTypeScreen extends StatelessWidget {
       backgroundColor: ColorRes.backGroundColor,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(left: 20.0,right: 20.0).w,
+          padding: EdgeInsets.only(left: 20.0.w,right: 20.0.w),
           child: Column(
             children: [
               SizedBox(height: 47.h,),

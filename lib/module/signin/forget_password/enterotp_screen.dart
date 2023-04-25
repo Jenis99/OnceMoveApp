@@ -23,7 +23,7 @@ class EnterOTP extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.only(left: 20.0, right: 20.0).w,
+        padding: EdgeInsets.only(left: 20.0.w, right: 20.0.w),
         child: SafeArea(
           child: Column(
             children: [

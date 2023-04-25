@@ -25,7 +25,7 @@ class _choose_guideState extends State<choose_guide> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(left: 20.0).w,
+        padding: EdgeInsets.only(left: 20.0.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

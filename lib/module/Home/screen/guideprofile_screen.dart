@@ -35,8 +35,7 @@ class _GuideProfileScreenState extends State<GuideProfileScreen> {
           child: SafeArea(
             child: Padding(
               padding: EdgeInsets
-                  .only(left: 20.0, right: 20.0)
-                  .w,
+                  .only(left: 20.0.w, right: 20.0.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

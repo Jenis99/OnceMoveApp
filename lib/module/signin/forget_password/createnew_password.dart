@@ -18,7 +18,7 @@ class CreateNewPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-          padding: const EdgeInsets.only(left: 20.0, right: 20.0).w,
+          padding: EdgeInsets.only(left: 20.0.w, right: 20.0.w),
           child: Column(
             children: [
               Expanded(
