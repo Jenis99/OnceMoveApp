@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/module/signup/controller/SignUpController.dart';
@@ -7,6 +9,7 @@ import 'package:untitled/util/CustomWidget/customhead_text.dart';
 import 'package:untitled/util/CustomWidget/custom_textfiled.dart';
 import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/color_resources.dart';
+import 'package:untitled/util/helper/toast_helper.dart';
 import 'package:untitled/util/hide_keyboard.dart';
 import 'package:untitled/util/image_resources.dart';
 import 'package:get/get.dart';
@@ -113,11 +116,25 @@ class SignupScreen extends StatelessWidget {
                   SizedBox(height: 50.h),
                   CustomButton(
                       text: AppString.continueSpelling,
-                      onTap: () {
+                      onTap: () async {
                         if (signUpController.signUpFormKey.currentState!
                             .validate()) {
                           HideKeyboard.hideKeyboardInApp(context);
-                          Get.toNamed(Routes.profileImage);
+                         signUpController.Singup();
+                          // if(signUpController.password.value==signUpController.confirm.value){
+                          //   FirebaseFirestore.instance.collection("UserDetail").add({
+                          //     "email":signUpController.email.text.toString(),
+                          //     "password":signUpController.password.text.toString(),
+                          //   }).then((value){
+                          //     AppToast.toastMessage("You Succesfully created your account");
+                          //     Get.toNamed(Routes.profileImage);
+                          //   });
+                          // }
+                          //
+                          // else{
+                          //   AppToast.toastMessage("Please Enter same password in both place");
+                          // }
+
                         }
                       }),
                   SizedBox(

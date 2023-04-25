@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/module/signin/controller/signin_controller.dart';
@@ -6,6 +8,7 @@ import 'package:untitled/util/CustomWidget/customhead_text.dart';
 import 'package:untitled/util/CustomWidget/custom_textfiled.dart';
 import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/color_resources.dart';
+import 'package:untitled/util/helper/toast_helper.dart';
 import 'package:untitled/util/image_resources.dart';
 import 'package:get/get.dart';
 import 'package:untitled/util/routes.dart';
@@ -126,10 +129,11 @@ class SignInScreen extends StatelessWidget {
                   SizedBox(height: 50.h),
                   CustomButton(
                       text: AppString.continueSpelling,
-                      onTap: () {
+                      onTap: () async {
                         if (signInController.signInFormKey.currentState!
                             .validate()) {
-                          Get.toNamed(Routes.bottomNavBarScreen);
+                          signInController.SignIn();
+
                         }
                       }),
                   SizedBox(

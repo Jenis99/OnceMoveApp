@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:get/get.dart';
 
 import 'util/routes.dart';
 
-void main() {
+void main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -23,7 +28,7 @@ class MyApp extends StatelessWidget {
         builder: (context, child) {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
-            initialRoute: Routes.bottomNavBarScreen,
+            initialRoute: Routes.splashscreen,
             getPages: Routes.pages,
             builder: (context, child) {
               return Scaffold(
@@ -43,4 +48,9 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+//Platform  Firebase App Id
+// web       1:366951219724:web:802402f6227cb9e8752429
+// android   1:366951219724:android:075fc89e1c2a354a752429
+// ios       1:366951219724:ios:c76a3884f9e96b90752429
 

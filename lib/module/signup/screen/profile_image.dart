@@ -80,8 +80,8 @@ class _ProfileImageState extends State<ProfileImage> {
                         child: GestureDetector(
                           onTap: () async {
                             AlertDialog alert = AlertDialog(
-                              title: const Text("My title"),
-                              content: const Text("This is my message."),
+                              title: const Text("Select Image"),
+                              content: const Text("Choose option for image where you choose"),
                               actions: [
                                 IconButton(
                                     onPressed: () async {
@@ -93,6 +93,7 @@ class _ProfileImageState extends State<ProfileImage> {
                                     onPressed: () async {
                                       Get.back();
                                       profileController.pickGalleryImage();
+
                                     },
                                     icon: const Icon(Icons.pin))
                               ],

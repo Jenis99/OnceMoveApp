@@ -43,7 +43,11 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   syncfusion_flutter_datepicker:
   intl:
-
+  firebase_core:
+  firebase_auth:
+  cloud_firestore:
+  firebase_storage:
+  fluttertoast:
 dev_dependencies:
   flutter_test:
     sdk: flutter

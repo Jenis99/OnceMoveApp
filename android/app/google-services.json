@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "366951219724",
+    "project_id": "oncemove-14ef2",
+    "storage_bucket": "oncemove-14ef2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:366951219724:android:075fc89e1c2a354a752429",
+        "android_client_info": {
+          "package_name": "com.example.untitled"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "366951219724-77ut887chnhd7l1puo82tjcs4lalg26d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyZdU3L5XUegdcXnubxZZQ8Pl9MLCMHvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "366951219724-77ut887chnhd7l1puo82tjcs4lalg26d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
