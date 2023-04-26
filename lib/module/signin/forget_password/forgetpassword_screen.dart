@@ -77,7 +77,7 @@ class ForgetPassword extends StatelessWidget {
                       onTap: () {
                         if (forgetController.forgetPasswordFormKey.currentState!
                             .validate()) {
-                          Get.toNamed(Routes.enterOtp);
+                          forgetController.checkemail();
                         }
                       }),
                 )

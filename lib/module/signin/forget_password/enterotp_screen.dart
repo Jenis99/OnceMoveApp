@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +70,8 @@ class EnterOTP extends StatelessWidget {
                           outlineBorderRadius: 15,
                           style: TextStyle(fontSize: 17),
                           onCompleted: (pin) {
-                            Get.toNamed(Routes.setNewPassword);
+                            log("pin numbr --- ${pin}");
+                            enterOtpController.verifyOTP(pinNumber: int.parse(pin));
                           }),
                       SizedBox(
                         height: 40.h,

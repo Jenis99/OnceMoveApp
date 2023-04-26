@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:untitled/util/helper/app_preferences.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +12,8 @@ void main()async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await AppPreference.initMySharedPreferences();
+
   runApp(const MyApp());
 }
 

@@ -48,6 +48,8 @@ dependencies:
   cloud_firestore:
   firebase_storage:
   fluttertoast:
+  uuid:
+  shared_preferences:
 dev_dependencies:
   flutter_test:
     sdk: flutter

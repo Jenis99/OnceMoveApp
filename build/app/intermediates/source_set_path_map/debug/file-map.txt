@@ -29,3 +29,4 @@ com.example.untitled.app-packaged_res-27 C:\Users\Admin\StudioProjects\OnceMove\
 com.example.untitled.app-packaged_res-28 C:\Users\Admin\StudioProjects\OnceMove\build\fluttertoast\intermediates\packaged_res\debug
 com.example.untitled.app-packaged_res-29 C:\Users\Admin\StudioProjects\OnceMove\build\image_picker_android\intermediates\packaged_res\debug
 com.example.untitled.app-packaged_res-30 C:\Users\Admin\StudioProjects\OnceMove\build\path_provider_android\intermediates\packaged_res\debug
+com.example.untitled.app-packaged_res-31 C:\Users\Admin\StudioProjects\OnceMove\build\shared_preferences_android\intermediates\packaged_res\debug

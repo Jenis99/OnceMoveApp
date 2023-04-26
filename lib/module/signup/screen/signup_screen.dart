@@ -121,19 +121,6 @@ class SignupScreen extends StatelessWidget {
                             .validate()) {
                           HideKeyboard.hideKeyboardInApp(context);
                          signUpController.Singup();
-                          // if(signUpController.password.value==signUpController.confirm.value){
-                          //   FirebaseFirestore.instance.collection("UserDetail").add({
-                          //     "email":signUpController.email.text.toString(),
-                          //     "password":signUpController.password.text.toString(),
-                          //   }).then((value){
-                          //     AppToast.toastMessage("You Succesfully created your account");
-                          //     Get.toNamed(Routes.profileImage);
-                          //   });
-                          // }
-                          //
-                          // else{
-                          //   AppToast.toastMessage("Please Enter same password in both place");
-                          // }
 
                         }
                       }),

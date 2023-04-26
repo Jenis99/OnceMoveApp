@@ -3,6 +3,7 @@ class AppString{
   static String home="Home";
   static String search="Search";
   static String verify="Verify";
+  static String isLogin="isLogin";
   static String generalUser="General User";
   static String guid="Guid";
   static String createNewPassword="Create New Password";
@@ -22,6 +23,7 @@ class AppString{
   static String capSignUp="SIGN UP";
   static String otp="OTP";
   static String done="Done";
+  static String cancle="Camcle";
   static String follow="Follow";
   static String otpToVerify="Enter OTP to verify";
   static String onBordIngLorem="Lorem ipsum dolor sit";
@@ -62,6 +64,8 @@ class AppString{
   static String bookingDetails="Booking Details";
   static String timeFormate="2:00 PM";
   static String note="Note";
+  static String plsEnterValid="Please enter valid Email";
+  static String plsEnterPass="Please enter valid Password";
   static String write="Write";
   static String confirm="Confirm";
   static String cancelRequest="Cancel Request";
@@ -73,8 +77,13 @@ class AppString{
   static String experience="Experience";
   static String about="About";
   static String filter="Filter";
+  static String logout="Log Out";
+  static String areYouSure="Are you sure you want log out your account";
   static String supportNeeded="Support Needed";
+  static String plsEnterSamePassword="Please enter valid password";
   static String aboutLorem="Lorem ipsum dolor sit amet consectetur.Tempor vulputate euismod auctor in. Tincidunt quis pellentesque.";
+  static String logoutSucceessfull="You are succeessfully LogOut";
+  static String accCreateSuccess="You create account successfully";
 
 
 //  Fonts

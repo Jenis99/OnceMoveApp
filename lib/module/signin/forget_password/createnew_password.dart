@@ -75,7 +75,7 @@ class CreateNewPassword extends StatelessWidget {
                   onTap: () {
                     if (newPasswordController.newPasswordFormKey.currentState!
                         .validate()) {
-                      Get.toNamed(Routes.homeScreen);
+                      newPasswordController.setPassword();
                     }
                   })
             ],
