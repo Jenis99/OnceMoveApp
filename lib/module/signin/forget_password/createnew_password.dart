@@ -6,6 +6,7 @@ import 'package:untitled/util/CustomWidget/custom_button.dart';
 import 'package:untitled/util/CustomWidget/customhead_text.dart';
 import 'package:untitled/util/CustomWidget/custom_textfiled.dart';
 import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
 import 'package:untitled/util/image_resources.dart';
 import 'package:untitled/util/routes.dart';
@@ -40,12 +41,10 @@ class CreateNewPassword extends StatelessWidget {
                         ),
                         CustomHeadText(name:AppString.createNewPassword),
                         SizedBox(height: 10.h,),
-                        Text(
-                          AppString.enterNewPassword,
-                          style: TextStyle(
+                        AppText(
+                          text:AppString.enterNewPassword,
                             fontSize: 16.sp,
                             color: ColorRes.greyText,
-                          ),
                         ),
                         SizedBox(
                           height: 30.0.h,

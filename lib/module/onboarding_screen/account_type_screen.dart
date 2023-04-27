@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
 import 'package:untitled/util/image_resources.dart';
 import 'package:get/get.dart';
@@ -25,12 +26,12 @@ class AccountTypeScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(AppString.chooseRole,style: TextStyle(
+                  AppText(text:AppString.chooseRole,
                     fontFamily: AppString.fontLato,
                      fontSize:30.sp,
                     fontWeight: FontWeight.bold,
                      color: ColorRes.blackColor,
-                  ),),
+                  ),
                   SizedBox(height: 12.h,),
                   Padding(
                     padding:  EdgeInsets.only(right:68).w,
@@ -85,18 +86,18 @@ class AccountTypeScreen extends StatelessWidget {
          children: [
            Image.asset(ImageUrl),
            SizedBox(height: 14.5.h,),
-           Text(UserType,style: TextStyle(
+           AppText(text: UserType,
              fontFamily: AppString.fontPoppins,
              fontWeight: FontWeight.bold,
              color: ColorRes.blackColor,
              fontSize: 16.sp,
-           ),),
+           ),
            SizedBox(height: 4.h,),
-           Text(UserProfessional,style: TextStyle(
+           AppText(text:UserProfessional,
              fontFamily: AppString.fontPoppins,
              color: ColorRes.greyColor,
              fontSize: 13.sp
-           ),)
+           ),
          ],
        ),
      ),

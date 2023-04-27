@@ -6,6 +6,7 @@ import 'package:untitled/util/CustomWidget/custom_button.dart';
 import 'package:untitled/util/CustomWidget/customhead_text.dart';
 import 'package:untitled/util/CustomWidget/custom_textfiled.dart';
 import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
 import 'package:untitled/util/image_resources.dart';
 import 'package:untitled/util/routes.dart';
@@ -46,12 +47,10 @@ class ForgetPassword extends StatelessWidget {
                           SizedBox(
                             height: 10.h,
                           ),
-                          Text(
-                            AppString.enterEmailToOTP,
-                            style: TextStyle(
+                          AppText(
+                            text:AppString.enterEmailToOTP,
                               fontSize: 16.sp,
                               color: ColorRes.greyText,
-                            ),
                           ),
                           SizedBox(
                             height: 30.0.h,
@@ -63,7 +62,7 @@ class ForgetPassword extends StatelessWidget {
                                 isPassword: false,
                                 controller: forgetController.email,
                                 keyType: TextInputType.emailAddress,
-                                hintText: "Alex",
+                                hintText: AppString.alexHintText,
                                 validator: AppValidator.userEmailValidation,
                                 suffixIcon: null),
                           ),

@@ -8,6 +8,7 @@ import 'package:untitled/util/CustomWidget/customhead_text.dart';
 import 'package:untitled/util/CustomWidget/star_display.dart';
 import 'package:untitled/util/CustomWidget/unordered_list.dart';
 import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
 import 'package:untitled/util/icon_resources.dart';
 import 'package:untitled/util/image_resources.dart';
@@ -25,7 +26,9 @@ class _GuideProfileScreenState extends State<GuideProfileScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    data = Get.arguments;
+    if(Get.arguments != null){
+      data =  Get.arguments;
+    }
   }
 
   @override
@@ -68,14 +71,14 @@ class _GuideProfileScreenState extends State<GuideProfileScreen> {
                         SizedBox(
                           height: 12.h,
                         ),
-                        Text(data["name"] ?? "John"),
+                        AppText(text:data["name"] ?? "John"),
                         SizedBox(
                           height: 12.h,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("4"),
+                            AppText(text: AppString.four,),
                             IconTheme(
                               data: IconThemeData(
                                 color: Colors.amber,
@@ -93,18 +96,15 @@ class _GuideProfileScreenState extends State<GuideProfileScreen> {
                           children: [
                             Column(
                               children: [
-                                Text(
-                                  "10",
-                                  style: TextStyle(
+                                AppText(
+                                  text:AppString.ten,
                                       fontSize: 18.sp,
-                                      fontFamily: AppString.fontPoppins),
+                                      fontFamily: AppString.fontPoppins
                                 ),
-                                Text(
-                                  "Clients",
-                                  style: TextStyle(
+                                AppText(
+                                 text: AppString.clients,
                                     fontFamily: AppString.fontPoppins,
                                     fontSize: 18.sp,
-                                  ),
                                 )
                               ],
                             ),
@@ -113,18 +113,15 @@ class _GuideProfileScreenState extends State<GuideProfileScreen> {
                             ),
                             Column(
                               children: [
-                                Text(
-                                  "1095",
-                                  style: TextStyle(
+                                AppText(
+                                  text: AppString.oneZeroNineFive,
                                       fontSize: 18.sp,
-                                      fontFamily: AppString.fontPoppins),
+                                      fontFamily: AppString.fontPoppins
                                 ),
-                                Text(
-                                  "Followers",
-                                  style: TextStyle(
+                                AppText(
+                                  text:AppString.followers,
                                     fontFamily: AppString.fontPoppins,
                                     fontSize: 18.sp,
-                                  ),
                                 )
                               ],
                             )
@@ -162,10 +159,9 @@ class _GuideProfileScreenState extends State<GuideProfileScreen> {
                   SizedBox(
                     height: 30.h,
                   ),
-                  Text(
-                    AppString.age,
-                    style: TextStyle(
-                        fontSize: 20.sp, fontFamily: AppString.fontPoppins),
+                  AppText(
+                   text: AppString.age,
+                        fontSize: 20.sp, fontFamily: AppString.fontPoppins
                   ),
                   SizedBox(
                     height: 10.h,
@@ -174,22 +170,20 @@ class _GuideProfileScreenState extends State<GuideProfileScreen> {
                   SizedBox(
                     height: 20.h,
                   ),
-                  Text(
-                    AppString.about,
-                    style: TextStyle(
-                        fontSize: 20.sp, fontFamily: AppString.fontPoppins),
+                  AppText(
+                    text:AppString.about,
+                        fontSize: 20.sp, fontFamily: AppString.fontPoppins
                   ),
                   SizedBox(
                     height: 10.h,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 10).r,
-                    child: Text(
-                      AppString.aboutLorem,
-                      style: TextStyle(
+                    child: AppText(
+                      text:AppString.aboutLorem,
                           fontSize: 16.sp,
                           color: ColorRes.greyText,
-                          fontFamily: AppString.fontPoppins),
+                          fontFamily: AppString.fontPoppins
                     ),
                   ),
                   SizedBox(
@@ -200,11 +194,10 @@ class _GuideProfileScreenState extends State<GuideProfileScreen> {
                     children: [
                       Column(
                         children: [
-                          Text(
-                            AppString.services,
-                            style: TextStyle(
+                          AppText(
+                            text:AppString.services,
                                 fontSize: 20.sp, fontFamily: AppString
-                                .fontPoppins),
+                                .fontPoppins
                           ),
                           UnorderedListItem(
                             text: AppString.walking,
@@ -224,18 +217,16 @@ class _GuideProfileScreenState extends State<GuideProfileScreen> {
                             .w,
                         child: Column(
                           children: [
-                            Text(
-                              AppString.experience,
-                              style: TextStyle(
+                            AppText(
+                              text:AppString.experience,
                                   fontSize: 20.sp,
-                                  fontFamily: AppString.fontPoppins),
+                                  fontFamily: AppString.fontPoppins
                             ),
-                            Text(
-                              AppString.oneYear,
-                              style: TextStyle(
+                            AppText(
+                              text:AppString.oneYear,
                                   fontFamily: AppString.fontPoppins,
                                   fontSize: 18.sp,
-                                  color: ColorRes.greyText),
+                                  color: ColorRes.greyText
                             )
                           ],
                         ),

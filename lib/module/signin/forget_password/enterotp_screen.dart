@@ -11,6 +11,7 @@ import 'package:untitled/util/CustomWidget/custom_button.dart';
 import 'package:untitled/util/CustomWidget/customhead_text.dart';
 
 import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
 import 'package:untitled/util/image_resources.dart';
 import 'package:otp_text_field/otp_text_field.dart';
@@ -47,12 +48,10 @@ class EnterOTP extends StatelessWidget {
                       SizedBox(
                         height: 10.h,
                       ),
-                      Text(
-                        AppString.otpToVerify,
-                        style: TextStyle(
+                      AppText(
+                        text:AppString.otpToVerify,
                           fontSize: 16.sp,
                           color: ColorRes.greyText,
-                        ),
                       ),
                       SizedBox(
                         height: 30.0.h,
@@ -70,7 +69,6 @@ class EnterOTP extends StatelessWidget {
                           outlineBorderRadius: 15,
                           style: TextStyle(fontSize: 17),
                           onCompleted: (pin) {
-                            log("pin numbr --- ${pin}");
                             enterOtpController.verifyOTP(pinNumber: int.parse(pin));
                           }),
                       SizedBox(
@@ -79,18 +77,18 @@ class EnterOTP extends StatelessWidget {
                       Center(
                           child:Obx(()=> Column(
                             children: [
-                              Text("00 : ${enterOtpController.second.string}",style: TextStyle(
+                              AppText(text:"00 : ${enterOtpController.second.string}",
                                   fontSize: 24.sp
-                              ),),
+                              ),
                               SizedBox(height: 6.h,),
                               GestureDetector(
                                 onTap: (){
                                   enterOtpController.resendotp();
                                 },
-                                child: Text(AppString.sendAgain,style: TextStyle(
+                                child: AppText(text:AppString.sendAgain,
                                     fontSize: 16.sp,
                                   color: ColorRes.greyText
-                                ),),
+                                ),
                               ),
                             ],
                           )

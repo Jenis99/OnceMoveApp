@@ -6,6 +6,7 @@ class AppValidator {
       return null;
     }
   }
+
   static String? userEmailValidation(String? value) {
     if (value!.isEmpty) {
       return "Please enter email";
@@ -17,14 +18,21 @@ class AppValidator {
   static String? passwordValidation(String? value) {
     if (value!.isEmpty) {
       return "Please enter password";
-    } else {
+    } else if (value!.length < 8) {
+      return "Please enter at Least 8 digit password";
+    }
+    else {
       return null;
     }
   }
+
   static String? confirmPassword(String? value) {
     if (value!.isEmpty) {
-      return "Please enter same Password";
-    } else {
+      return "Please enter password";
+    } else if (value!.length < 8) {
+      return "Please enter at Least 8 digit password";
+    }
+    else {
       return null;
     }
   }

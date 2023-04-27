@@ -42,8 +42,8 @@ class AppText extends StatelessWidget {
       maxLines: maxLines,
       overflow: overflow,
       style: TextStyle(
-        fontFamily: fontFamily ,
-        color: color ?? ColorRes.primaryColor,
+        fontFamily: fontFamily ?? AppString.fontPoppins,
+        color: color ?? ColorRes.blackColor,
         fontWeight: fontWeight ?? FontWeight.w400,
         fontSize: fontSize,
         height: height,

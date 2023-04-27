@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/app_text.dart';
 
 class CustomNetworkImage extends StatelessWidget {
   String image;
@@ -21,7 +23,7 @@ class CustomNetworkImage extends StatelessWidget {
           width: width,
           height: height,
           errorBuilder: (context, error, stackTrace) =>
-              const Center(child: Text("Check Your Image Link")),
+               Center(child: AppText(text:AppString.checkYourImgUrl)),
           loadingBuilder: (BuildContext context, Widget child,
               ImageChunkEvent? loadingProgress) {
             if (loadingProgress == null) return child;

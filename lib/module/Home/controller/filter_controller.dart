@@ -5,91 +5,24 @@ import 'package:intl/intl.dart';
 import 'package:untitled/util/color_resources.dart';
 
 class FilterController extends GetxController {
-  RxString selectedItem = "Easy Run".obs;
-  RxString selectedItem2 = "full assistance".obs;
-  RxString tFormatDropDownValue = "".obs;
-  // RxList tPlayerDropDownList = [].obs;
-  // RxString runDropdownValue = 'Easy Run'.obs;
-  // RxString supportDropdown = 'full assistance'.obs;
-
-  final supportNeeded = [
+  RxString selectedItem = "".obs;
+  RxString selectedItem2 = "Dog".obs;
+  RxList supportNeeded = [
     'full assistance',
     'little assistance'
-  ];
+  ].obs;
 
-  final typeOfHour = [
+  RxList typeOfHour = [
     'Easy Run',
     'Long Run',
     'Intervals',
     'Race'
-  ];
+  ].obs;
 
   TextEditingController dateInput = TextEditingController();
   TextEditingController timeInput = TextEditingController();
 
-  List<DropdownMenuItem<String>> get dropdownMenuItems {
-    return typeOfHour.map((String option) {
-      return DropdownMenuItem<String>(
-        value: option,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(option),
-        Container(
-          height: 15.0.h,
-          width: 15.0.w,
-          decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color:
-              (selectedItem.value == option)
-                  ? Color(0xff1059BC)
-                  : Color(0xffB7B7B7)),
-        )
-          ],
-        ),
-      );
-    }).toList();
-  }
-
-
-  List<DropdownMenuItem<String>> get secondDropdownMenuItems {
-      return supportNeeded.map((String option) {
-      return DropdownMenuItem<String>(
-        value: option,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(option),
-            Container(
-              height: 15.0.h,
-              width: 15.0.w,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                      color:
-                      ColorRes.primaryColor),
-                  color:
-                  (selectedItem2.value == option)
-                      ? ColorRes.primaryColor
-                      : ColorRes.whiteColor),
-            )
-          ],
-        ),
-      );
-    }).toList();
-  }
-
-  get context => null;
-
-  void onItemSelect(value) {
-    selectedItem.value = value;
-  }
-
-  void onSecondItemSelect(value) {
-    selectedItem2.value = value;
-  }
-
-  PickDate() async {
+  PickDate({required BuildContext context}) async {
     DateTime? pickedDate = await showDatePicker(
         context: context,
         initialDate: DateTime.now(),
@@ -113,7 +46,7 @@ class FilterController extends GetxController {
     }
   }
 
-  TimePick() async {
+  TimePick({required BuildContext context}) async {
     TimeOfDay? pickedTime = await showTimePicker(
       initialTime: TimeOfDay.now(),
       context: context,

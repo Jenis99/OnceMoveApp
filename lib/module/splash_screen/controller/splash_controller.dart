@@ -12,7 +12,7 @@ class SplashController extends GetxController{
   void onInit() async{
     super.onInit();
     await Future.delayed(
-        const Duration(seconds: 5),
+        const Duration(seconds: 2),
     () => openScreen(),);
   }
 
@@ -25,7 +25,7 @@ class SplashController extends GetxController{
     //  bool islogin =await prefs.getBool("")??false;
 
     if(AppPreference.getBoolean(AppString.isLogin)){
-      Get.toNamed(Routes.bottomNavBarScreen);
+      Get.offAndToNamed(Routes.bottomNavBarScreen);
     }
     else{
       Get.offAndToNamed(Routes.onBoarding);

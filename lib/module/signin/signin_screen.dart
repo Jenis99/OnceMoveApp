@@ -7,6 +7,7 @@ import 'package:untitled/util/CustomWidget/custom_button.dart';
 import 'package:untitled/util/CustomWidget/customhead_text.dart';
 import 'package:untitled/util/CustomWidget/custom_textfiled.dart';
 import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
 import 'package:untitled/util/helper/toast_helper.dart';
 import 'package:untitled/util/image_resources.dart';
@@ -77,32 +78,30 @@ class SignInScreen extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(AppString.forgetPassword,
-                          style: TextStyle(
-                            color: Colors.transparent,
-                            fontSize: 16.sp,
-                            fontFamily: AppString.fontLato,
-                            decorationColor: ColorRes.primaryColor,
-                            shadows: const [
-                              Shadow(
-                                  color: ColorRes.primaryColor,
-                                  offset: Offset(0, -3))
-                            ],
-                            decoration: TextDecoration.underline,
-                            decorationThickness: 1,
+                            style: TextStyle(
+                                color: Colors.transparent,
+                                fontSize: 16.sp,
+                                fontFamily: AppString.fontLato,
+                                decorationColor: ColorRes.primaryColor,
+                                shadows: const [
+                                  Shadow(
+                                      color: ColorRes.primaryColor,
+                                      offset: Offset(0, -3))
+                                ],
+                                decoration: TextDecoration.underline,
+                                decorationThickness: 1
+                            ),
                           )),
                     ),
-                  ),
                   SizedBox(
                     height: 46.h,
                   ),
                   Center(
-                    child: Text(
-                      AppString.or,
-                      style: TextStyle(
+                    child: AppText(
+                      text:AppString.or,
                         fontSize: 24.sp,
                         fontFamily: AppString.fontLato,
                         fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ),
                   SizedBox(height: 46.h),
@@ -111,21 +110,21 @@ class SignInScreen extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.center,
                       child: Text(AppString.userVoiceInstead,
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: Colors.transparent,
-                            fontSize: 20.sp,
-                            fontFamily: AppString.fontLato,
-                            decorationColor: ColorRes.primaryColor,
-                            shadows: [
-                              const Shadow(
-                                  color: ColorRes.primaryColor,
-                                  offset: Offset(0, -3))
-                            ],
-                            decorationThickness: 1,
+                           style: TextStyle(
+                             decoration: TextDecoration.underline,
+                             color: Colors.transparent,
+                             fontSize: 20.sp,
+                             fontFamily: AppString.fontLato,
+                             decorationColor: ColorRes.primaryColor,
+                             shadows: [
+                               const Shadow(
+                                   color: ColorRes.primaryColor,
+                                   offset: Offset(0, -3))
+                             ],
+                             decorationThickness: 1,
+                           ),
                           )),
                     ),
-                  ),
                   SizedBox(height: 50.h),
                   CustomButton(
                       text: AppString.continueSpelling,
@@ -146,19 +145,17 @@ class SignInScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          AppString.donTHaveAcc,
-                          style: TextStyle(
+                        AppText(
+                          text:AppString.donTHaveAcc,
                               fontSize: 20.sp, color: ColorRes.greyText),
-                        ),
+
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              AppString.capSignUp,
-                              style: TextStyle(
+                            AppText(
+                              text:AppString.capSignUp,
                                   fontSize: 20.sp,
-                                  color: ColorRes.primaryColor),
+                                  color: ColorRes.primaryColor
                             ),
                             Container(
                               margin: const EdgeInsets.only(top: 1.0).w,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
 
 class CustomTextfield extends StatelessWidget {
@@ -41,13 +42,12 @@ class CustomTextfield extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                name,
-                style: TextStyle(
+              AppText(
+               text: name??"",
                     fontSize: 18.sp,
                     fontFamily: AppString.fontPoppins,
                     color: ColorRes.textColor,
-                    fontWeight: FontWeight.w400),
+                    fontWeight: FontWeight.w400
               ),
               SizedBox(
                 height: 6.h,

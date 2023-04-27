@@ -9,8 +9,9 @@ class AppToast {
       msg: message,
       backgroundColor: ColorRes.primaryColor,
       toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      fontSize: 40.0.w,
+      gravity: ToastGravity.TOP,
+      fontSize: 20.0.w,
+      textColor:Color                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
     );
   }
 }

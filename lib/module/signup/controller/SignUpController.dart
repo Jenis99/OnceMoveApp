@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:untitled/util/app_constant.dart';
 import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/helper/app_preferences.dart';
 import 'package:untitled/util/helper/toast_helper.dart';
@@ -23,9 +24,12 @@ class SignUpController extends GetxController {
 
         if(value.docs.isEmpty){
           FirebaseFirestore.instance.collection("UserDetail").add({
-            "email":email.text.toString(),
-            "password":password.text.toString(),
+            "email":email.text.trim(),
+            "password":password.text.trim(),
           }).then((value) async {
+
+            AppPreference.setString(AppConstant.userId,value.id );
+
             Get.toNamed(Routes.profileImage);
             AppToast.toastMessage(AppString.accCreateSuccess);
             AppPreference.setBoolean(AppString.isLogin, value: true);

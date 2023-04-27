@@ -6,6 +6,7 @@ import 'package:untitled/module/signup/controller/choose_controller.dart';
 import 'package:untitled/util/CustomWidget/custom_button.dart';
 import 'package:untitled/util/CustomWidget/customhead_text.dart';
 import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
 import 'package:untitled/util/image_resources.dart';
 import 'package:untitled/util/routes.dart';
@@ -41,10 +42,10 @@ class _choose_guideState extends State<choose_guide> {
                    child: Image.asset(ImageRes.backButton)),
                SizedBox(height: 21.67.h,),
                CustomHeadText(name:AppString.lookingFor),
-               Text(AppString.selectOne,style: TextStyle(
+               AppText(text:AppString.selectOne,
                  fontSize: 16.sp,
                  color: ColorRes.greyText,
-               ),),
+               ),
                SizedBox(height: 36.h,),
                Obx(() => Column(
                  children: [
@@ -72,10 +73,10 @@ class _choose_guideState extends State<choose_guide> {
                         ),
                        ),
                         SizedBox(width: 8.w,),
-                       Text("Guides to help me running",style: TextStyle(
+                       AppText(text :AppString.guideToHelpRunning,
                          fontSize: 18.sp,
                          fontFamily: AppString.fontPoppins,
-                       ),),
+                       ),
                      ],
                    ),
                    SizedBox(height: 10.0,),
@@ -103,21 +104,19 @@ class _choose_guideState extends State<choose_guide> {
                          ),
                        ),
                        SizedBox(width: 8.w,),
-                       Text("Someone to guide",style: TextStyle(
+                       AppText(text:AppString.fontPoppins,
                          fontSize: 18.sp,
                          fontFamily: AppString.fontPoppins,
-                       ),),
+                       ),
                      ],
                    ),
                  ],
                ),),
-
-
              ],
            )),
                CustomButton(text: AppString.continueSpelling,
                    onTap:(){
-                 Get.toNamed(Routes.homeScreen);
+                 Get.offAllNamed(Routes.bottomNavBarScreen);
                })
           ],
         ),

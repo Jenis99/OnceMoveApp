@@ -12,12 +12,8 @@ class ProfileController extends GetxController{
 
 
   Future<void> LogOut()async{
-    await FirebaseFirestore.instance.collection("UserDetail").doc().delete().then((value)async{
-
       AppPreference.setBoolean(AppString.isLogin, value: false);
       Get.offAllNamed(Routes.signInScreen);
       AppToast.toastMessage(AppString.logoutSucceessfull);
-
-    });
   }
 }

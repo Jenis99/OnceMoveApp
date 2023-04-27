@@ -1,9 +1,12 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:untitled/util/app_constant.dart';
+import 'package:untitled/util/helper/app_preferences.dart';
 import 'package:uuid/uuid.dart';
 
 class ProfileController extends GetxController {
@@ -78,12 +81,24 @@ class ProfileController extends GetxController {
 
        // print("image filedata -----------------------");
       await filedata.ref.getDownloadURL().then((fileurl) async {
-        print("This is File Url ----------------------"+fileurl);
+
+        await FirebaseFirestore.instance.collection("UserDetail").doc(AppPreference.getString(AppConstant.userId)).update(
+            {
+              "profileUrl":fileurl,
+            }).then((value) {
+          print("This is File Url ----------------------"+fileurl+"-----------------------");
+        });
+
         // print("image Uploaded -----------------------");
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setString("profileUrl", fileurl);
-        // print("${prefs.getString("profileUrl")}-------------==--------=------------------=");
       });
     });
   }
 }
+
+//FirebaseFirestore.instance.collection('collectionName')
+//   .doc('docID')
+//   .set({
+//   'field': 'value'
+// },SetOptions(merge: true)).then((value){
+//   //Do your stuff.
+// });

@@ -1,34 +1,7 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:untitled/util/app_string.dart';
-// import 'package:untitled/util/color_resources.dart';
-//
-// class CustomButton extends StatelessWidget{
-//    var ButtonText;
-//    VoidCallback? onTap;
-//    CustomButton({required this.ButtonText,required this.onTap});
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       height: 54.h,
-//         width: 390.w,
-//         child: ElevatedButton(onPressed:onTap , child: Text(ButtonText,style: TextStyle(
-//           fontWeight: FontWeight.bold,
-//           fontSize: 24.sp,
-//           fontFamily: AppString.fontPoppins
-//         ),),
-//         style: ElevatedButton.styleFrom(
-//           primary: ColorRes.primaryColor,
-//           shape: RoundedRectangleBorder(
-//             borderRadius: BorderRadius.circular(50.0),
-//           )
-//         ),));
-//   }
-//
-// }
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
 import 'package:untitled/util/sizeutils.dart';
 
@@ -73,12 +46,12 @@ class CustomButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.sp,vertical: 10.sp),
           child: Align(
             alignment: Alignment.center,
-            child: Text(text,style: TextStyle(
+            child: AppText(text:text,
               fontWeight: FontWeight.w400,
               fontSize: 29.sp,
              fontFamily: AppString.fontPoppins,
               color: textColor ?? ColorRes.whiteColor,
-            ),)
+            ),
           ),
         ),
       ),

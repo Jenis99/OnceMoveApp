@@ -11,6 +11,15 @@ class AppString{
   static String sendAgain="Send again";
   static String takeProfessional="Take Professional";
   static String or="OR";
+  static String followers="Followers";
+  static String seventeen="17:00";
+  static String four="4";
+  static String checkYourImgUrl="Check Your Image URL";
+  static String oneZeroNineFive="1095";
+  static String ten="10";
+  static String clients="Clients";
+  static String dateTwelve="12/08/2022";
+  static String thirteenKmAway="13 km Away";
   static String profile="Profile";
   static String unfollow="Unfollow";
   static String walking="Walking";
@@ -23,7 +32,7 @@ class AppString{
   static String capSignUp="SIGN UP";
   static String otp="OTP";
   static String done="Done";
-  static String cancle="Camcle";
+  static String cancle="Cancle";
   static String follow="Follow";
   static String otpToVerify="Enter OTP to verify";
   static String onBordIngLorem="Lorem ipsum dolor sit";
@@ -76,8 +85,13 @@ class AppString{
   static String services="Services";
   static String experience="Experience";
   static String about="About";
+  static String timeIsNotSelected="Time is not selected";
+  static String dateIsNotSelected="Date is not selected";
   static String filter="Filter";
   static String logout="Log Out";
+  static String someoneToGuide="Someone to guide";
+  static String selectOption="Select Option";
+  static String guideToHelpRunning="Guides to help me running";
   static String areYouSure="Are you sure you want log out your account";
   static String supportNeeded="Support Needed";
   static String plsEnterSamePassword="Please enter valid password";
@@ -85,6 +99,10 @@ class AppString{
   static String logoutSucceessfull="You are succeessfully LogOut";
   static String accCreateSuccess="You create account successfully";
 
+
+
+
+// List
 
 //  Fonts
   static const String fontPoppins = "Poppins";

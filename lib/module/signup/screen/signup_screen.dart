@@ -8,6 +8,7 @@ import 'package:untitled/util/CustomWidget/custom_button.dart';
 import 'package:untitled/util/CustomWidget/customhead_text.dart';
 import 'package:untitled/util/CustomWidget/custom_textfiled.dart';
 import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
 import 'package:untitled/util/helper/toast_helper.dart';
 import 'package:untitled/util/hide_keyboard.dart';
@@ -83,13 +84,11 @@ class SignupScreen extends StatelessWidget {
                     height: 36.h,
                   ),
                   Center(
-                    child: Text(
-                      AppString.or,
-                      style: TextStyle(
+                    child: AppText(
+                      text:AppString.or,
                         fontSize: 25.sp,
                         fontFamily: AppString.fontLato,
                         fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ),
                   SizedBox(height: 46.72.h),
@@ -135,11 +134,9 @@ class SignupScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       // crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          AppString.alreadyHaveAcc,
-                          style: TextStyle(
+                        AppText(
+                          text:AppString.alreadyHaveAcc,
                               fontSize: 20.sp, color: ColorRes.greyText),
-                        ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           // mainAxisAlignment: MainAxisAlignment.end,

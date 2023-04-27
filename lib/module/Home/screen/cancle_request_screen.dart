@@ -7,6 +7,7 @@ import 'package:untitled/util/CustomWidget/custom_network_image.dart';
 import 'package:untitled/util/CustomWidget/customhead_text.dart';
 import 'package:untitled/util/CustomWidget/star_display.dart';
 import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
 import 'package:untitled/util/icon_resources.dart';
 import 'package:untitled/util/image_resources.dart';
@@ -26,7 +27,9 @@ class _CancleRequestScreenState extends State<CancleRequestScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    if(Get.arguments != null){
       data =  Get.arguments;
+    }
   }
 
   @override
@@ -71,27 +74,23 @@ class _CancleRequestScreenState extends State<CancleRequestScreen> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    data["name"] ??
+                                  AppText(
+                                    text:data["name"] ??
                                         "John",
-                                    style: TextStyle(
                                       fontSize: 22.sp,
-                                    ),
                                   ),
-                                  Text(
-                                    data["distance"] ?? "13 km away",
-                                    style: TextStyle(
+                                  AppText(
+                                    text:data["distance"] ?? AppString.thirteenKmAway,
                                         fontSize: 19.sp,
                                         fontFamily: AppString.fontInter,
                                         color: ColorRes.greyText
-                                    ),
                                   ),
                                   SizedBox(
                                     height: 6.h,
                                   ),
                                   Row(
                                     children: [
-                                      Text("4"),
+                                      AppText(text:AppString.four),
                                       IconTheme(
                                         data: IconThemeData(
                                           color: Colors.amber,
@@ -119,38 +118,33 @@ class _CancleRequestScreenState extends State<CancleRequestScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 18.0).w,
-                      child: Text(
-                        AppString.serviceDetail,
-                        style: TextStyle(
+                      child: AppText(
+                        text:AppString.serviceDetail,
                             fontFamily: AppString.fontPoppins, fontSize: 20.sp),
-                      ),
                     ),
                     SizedBox(
                       height: 8.h,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0).w,
-                      child: Text(
-                        AppString.serviceLorem,
-                        style:
-                        TextStyle(fontSize: 16.sp, color: ColorRes.greyText),
+                      child: AppText(
+                        text:AppString.serviceLorem,
+                          fontSize: 16.sp, color: ColorRes.greyText
                       ),
                     ),
                     SizedBox(
                       height: 20.h,
                     ),
-                    Text(
-                      AppString.location,
-                      style: TextStyle(
-                          fontSize: 20.sp, fontFamily: AppString.fontPoppins),
+                    AppText(
+                      text:AppString.location,
+                          fontSize: 20.sp, fontFamily: AppString.fontPoppins
                     ),
                     SizedBox(
                       height: 8.h,
                     ),
-                    Text(
-                      AppString.address,
-                      style: TextStyle(
-                          fontSize: 14.sp, fontFamily: AppString.fontPoppins),
+                    AppText(
+                      text:AppString.address,
+                          fontSize: 14.sp, fontFamily: AppString.fontPoppins
                     ),
                     SizedBox(
                       height: 20.h,
@@ -160,21 +154,18 @@ class _CancleRequestScreenState extends State<CancleRequestScreen> {
                       children: [
                         Column(
                           children: [
-                            Text(
-                              AppString.date,
-                              style: TextStyle(
+                            AppText(
+                              text:AppString.date,
                                 fontFamily: AppString.fontPoppins,
                                 fontSize: 20.sp,
-                              ),
                             ),
                             SizedBox(
                               height: 10.h,
                             ),
-                            Text(
-                              "12/08/2022",
-                              style: TextStyle(
+                            AppText(
+                             text: AppString.dateTwelve,
                                   fontSize: 14.sp,
-                                  fontFamily: AppString.fontPoppins),
+                                  fontFamily: AppString.fontPoppins
                             )
                           ],
                         ),
@@ -182,21 +173,18 @@ class _CancleRequestScreenState extends State<CancleRequestScreen> {
                           padding: const EdgeInsets.only(right: 70.0).w,
                           child: Column(
                             children: [
-                              Text(
-                                AppString.time,
-                                style: TextStyle(
+                              AppText(
+                                text:AppString.time,
                                   fontFamily: AppString.fontPoppins,
                                   fontSize: 20.sp,
-                                ),
                               ),
                               SizedBox(
                                 height: 10.h,
                               ),
-                              Text(
-                                "17:00",
-                                style: TextStyle(
+                              AppText(
+                                text:AppString.seventeen,
                                     fontSize: 14.sp,
-                                    fontFamily: AppString.fontPoppins),
+                                    fontFamily: AppString.fontPoppins
                               )
                             ],
                           ),
@@ -206,18 +194,15 @@ class _CancleRequestScreenState extends State<CancleRequestScreen> {
                     SizedBox(
                       height: 10.h,
                     ),
-                    Text(
-                      AppString.typeOfRun,
-                      style: TextStyle(
-                          fontSize: 20.sp, fontFamily: AppString.fontPoppins),
+                    AppText(
+                      text:AppString.typeOfRun,
+                          fontSize: 20.sp, fontFamily: AppString.fontPoppins
                     ),
                     SizedBox(
                       height: 8.h,
                     ),
-                    Text(
-                      AppString.longLessHour,
-                      style: TextStyle(fontSize: 14.sp),
-                    ),
+                    AppText(
+                      text:AppString.longLessHour,fontSize: 14.sp),
                   ],
                 ),
               ),

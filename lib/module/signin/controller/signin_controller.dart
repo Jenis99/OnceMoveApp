@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:untitled/util/app_constant.dart';
 import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/helper/app_preferences.dart';
 import 'package:untitled/util/helper/toast_helper.dart';
@@ -28,9 +29,12 @@ class SignInController extends GetxController {
             isEqualTo: email.text.toLowerCase().trim(),)
         .get()
         .then((value) async {
+          print("value.docs.length-----------------${value.docs.length}-----------------------");
+
+
      if(value.docs.isNotEmpty && value.docs.first.data()["password"]==password.text.trim()){
-
-
+       // print("value.docs.first.data-----------${value.docs.first.data()["password"]}--------------------------");
+       AppPreference.setString(AppConstant.userId,value.docs.first.id );
        Get.offAllNamed(Routes.bottomNavBarScreen);
        AppPreference.setBoolean(AppString.isLogin, value: true);
 
@@ -39,6 +43,7 @@ class SignInController extends GetxController {
        // prefs.setString("islogin", "true");
      }
      else{
+       // print("value.docs.first.data-----------${value.docs.first.data()["password"]}--------------------------");
        AppToast.toastMessage(AppString.plsEnterPass);
      }
     });
