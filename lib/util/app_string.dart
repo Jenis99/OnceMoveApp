@@ -11,6 +11,8 @@ class AppString{
   static String sendAgain="Send again";
   static String takeProfessional="Take Professional";
   static String or="OR";
+  static String successful="Successful";
+  static String emailAlreadyExits="This email is  already exits";
   static String followers="Followers";
   static String seventeen="17:00";
   static String four="4";

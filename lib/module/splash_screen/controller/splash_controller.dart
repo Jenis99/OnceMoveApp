@@ -17,21 +17,18 @@ class SplashController extends GetxController{
   }
 
   void openScreen() async {
-    await Future.delayed(
-      const Duration(seconds: 5),
-      );
-
-    // SharedPreferences prefs=await SharedPreferences.getInstance();
-    //  bool islogin =await prefs.getBool("")??false;
 
     if(AppPreference.getBoolean(AppString.isLogin)){
       Get.offAndToNamed(Routes.bottomNavBarScreen);
     }
-    else{
+    else if(!AppPreference.getBoolean(AppString.isLogin)){
+      Get.offAndToNamed(Routes.chooseGuide);
+    }
+    else
+    {
       Get.offAndToNamed(Routes.onBoarding);
     }
-    // print('AppSharedPreference.accessToken()-->${AppSharedPreference.accessToken()}');
-    // AppSharedPreference.accessToken().isEmpty ? Get.offAndToNamed(Routes.loginScreen) : Get.offAndToNamed(Routes.home);
+
   }
 
 }

@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get/get.dart';
 import 'package:untitled/util/app_constant.dart';
 import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/helper/app_preferences.dart';
@@ -31,12 +30,13 @@ class SignUpController extends GetxController {
             AppPreference.setString(AppConstant.userId,value.id );
 
             Get.toNamed(Routes.profileImage);
-            AppToast.toastMessage(AppString.accCreateSuccess);
+            Get.snackbar(AppString.successful, AppString.accCreateSuccess);
             AppPreference.setBoolean(AppString.isLogin, value: true);
           });;
         }
         else{
-          AppToast.toastMessage("You Already Have Account!!");
+          Get.snackbar("Error", AppString.emailAlreadyExits);
+          // AppToast.toastMessage("This email already exits");
         }
       });
     }
