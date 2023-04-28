@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:untitled/module/signin/controller/forgetpassword_controller.dart';
-import 'package:untitled/util/CustomWidget/custom_button.dart';
-import 'package:untitled/util/CustomWidget/customhead_text.dart';
-import 'package:untitled/util/CustomWidget/custom_textfiled.dart';
 import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
+import 'package:untitled/util/custom_widget/app_snackbar.dart';
+import 'package:untitled/util/custom_widget/custom_button.dart';
+import 'package:untitled/util/custom_widget/custom_textfiled.dart';
+import 'package:untitled/util/custom_widget/customhead_text.dart';
 import 'package:untitled/util/image_resources.dart';
-import 'package:untitled/util/routes.dart';
 import 'package:untitled/util/validation_utils.dart';
 
 class ForgetPassword extends StatelessWidget {
@@ -71,14 +71,20 @@ class ForgetPassword extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20.0).w,
-                  child: CustomButton(
+                  child: Obx(()=> CustomButton(
+                      isLoading: forgetController.isLoading.value,
                       text: AppString.continueSpelling,
                       onTap: () {
                         if (forgetController.forgetPasswordFormKey.currentState!
                             .validate()) {
-                          forgetController.checkemail();
+                          if(AppValidator.emailValidation(forgetController.email.text)){
+                            forgetController.checkemail();
+                          }
+                          else{
+                            AppSnackBar(AppString.error , AppString.emailNotValid);
+                          }
                         }
-                      }),
+                      }),),
                 )
               ],
             )),

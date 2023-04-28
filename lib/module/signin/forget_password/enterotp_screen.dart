@@ -7,12 +7,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:untitled/module/signin/controller/enterotp_controller.dart';
-import 'package:untitled/util/CustomWidget/custom_button.dart';
-import 'package:untitled/util/CustomWidget/customhead_text.dart';
-
 import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
+import 'package:untitled/util/custom_widget/custom_button.dart';
+import 'package:untitled/util/custom_widget/customhead_text.dart';
 import 'package:untitled/util/image_resources.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:untitled/util/routes.dart';

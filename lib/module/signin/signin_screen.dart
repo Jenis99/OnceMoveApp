@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/module/signin/controller/signin_controller.dart';
-import 'package:untitled/util/CustomWidget/custom_button.dart';
-import 'package:untitled/util/CustomWidget/customhead_text.dart';
-import 'package:untitled/util/CustomWidget/custom_textfiled.dart';
 import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
+import 'package:untitled/util/custom_widget/app_snackbar.dart';
+import 'package:untitled/util/custom_widget/custom_button.dart';
+import 'package:untitled/util/custom_widget/custom_textfiled.dart';
+import 'package:untitled/util/custom_widget/customhead_text.dart';
 import 'package:untitled/util/image_resources.dart';
 import 'package:get/get.dart';
 import 'package:untitled/util/routes.dart';
@@ -122,15 +123,24 @@ class SignInScreen extends StatelessWidget {
                           )),
                     ),
                   SizedBox(height: 50.h),
-                  CustomButton(
-                      text: AppString.continueSpelling,
-                      onTap: () async {
-                        if (signInController.signInFormKey.currentState!
-                            .validate()) {
-                          signInController.SignIn();
-
-                        }
-                      }),
+                 Obx(() =>  CustomButton(
+                     text: AppString.continueSpelling,
+                     isLoading: signInController.isLoading.value,
+                     onTap: () async {
+                       if (signInController.signInFormKey.currentState!
+                           .validate()) {
+                         if(AppValidator.emailValidation(signInController.email.text)){
+                           signInController.SignIn();
+                         }
+                         else{
+                           AppSnackBar(AppString.error, AppString.emailNotValid);
+                         }
+                       }
+                       else{
+                         // Get.snackbar("title", "message",colorText: ColorRes.primaryColor );
+                         // AppSnackBar("", "");
+                       }
+                     }),),
                   SizedBox(
                     height: 40.0.h,
                   ),

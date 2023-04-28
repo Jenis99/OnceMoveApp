@@ -3,12 +3,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/module/signup/controller/profile_controller.dart';
-
-import 'package:untitled/util/CustomWidget/custom_button.dart';
-import 'package:untitled/util/CustomWidget/customhead_text.dart';
-import 'package:untitled/util/CustomWidget/unordered_list.dart';
 import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
+import 'package:untitled/util/custom_widget/app_snackbar.dart';
+import 'package:untitled/util/custom_widget/custom_button.dart';
+import 'package:untitled/util/custom_widget/customhead_text.dart';
+import 'package:untitled/util/custom_widget/unordered_list.dart';
 import 'package:untitled/util/image_resources.dart';
 import 'package:get/get.dart';
 import 'package:untitled/util/routes.dart';
@@ -60,17 +61,19 @@ class _ProfileImageState extends State<ProfileImage> {
                             shape: BoxShape.circle,
                             image: profileController.selectedfile.isEmpty
                                 ? const DecorationImage(
+                              fit: BoxFit.cover,
                                     image: (AssetImage(
                                     ImageRes.profileImg,
                                   )))
                                 : DecorationImage(
+                              fit: BoxFit.cover,
                                     image: FileImage(
                                       File(profileController
                                               .selectedfile.value ??
                                           ""),
                                     ),
                                   ),
-                          ),
+                          )
                         ),
                       ),
                       // Image.file(profileController.selectedfile!)),
@@ -80,8 +83,8 @@ class _ProfileImageState extends State<ProfileImage> {
                         child: GestureDetector(
                           onTap: () async {
                             AlertDialog alert = AlertDialog(
-                              title: const Text("Select Image"),
-                              content: const Text("Choose option for image where you choose"),
+                              title: AppText(text: AppString.selectImg),
+                              content: AppText(text: AppString.selectImgFrom),
                               actions: [
                                 IconButton(
                                     onPressed: () async {
@@ -93,9 +96,8 @@ class _ProfileImageState extends State<ProfileImage> {
                                     onPressed: () async {
                                       Get.back();
                                       profileController.pickGalleryImage();
-
                                     },
-                                    icon: const Icon(Icons.pin))
+                                    icon: const Icon(Icons.image))
                               ],
                             );
                             showDialog(
@@ -120,12 +122,18 @@ class _ProfileImageState extends State<ProfileImage> {
                 ],
               ),
             ),
-            CustomButton(
-              onTap: () {
-                Get.toNamed(Routes.chooseGuide);
-              },
-              text: AppString.continueSpelling,
-            )
+           Obx(() => CustomButton(
+             isLoading:profileController.isLoading.value ,
+             onTap: () {
+               if(profileController.selectedfile.isNotEmpty){
+                 profileController.uploadImage();
+               }
+               else{
+                 AppSnackBar(AppString.error, AppString.plsSelectImg);
+               }
+             },
+             text: AppString.continueSpelling,
+           )),
           ],
         ),
       ),

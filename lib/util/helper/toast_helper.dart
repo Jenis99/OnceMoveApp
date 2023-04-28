@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:untitled/util/color_resources.dart';
 
 class AppToast {
-  static void toastMessage(String message, {Color? color}) {
+  static void ToastMessage(String message, {Color? color}) {
     Fluttertoast.showToast(
       msg: message,
       backgroundColor: ColorRes.primaryColor,

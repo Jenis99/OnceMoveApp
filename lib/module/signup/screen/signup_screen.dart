@@ -1,16 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitled/module/signup/controller/SignUpController.dart';
-
-import 'package:untitled/util/CustomWidget/custom_button.dart';
-import 'package:untitled/util/CustomWidget/customhead_text.dart';
-import 'package:untitled/util/CustomWidget/custom_textfiled.dart';
+import 'package:untitled/module/signup/controller/signup_controller.dart';
 import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
-import 'package:untitled/util/helper/toast_helper.dart';
+import 'package:untitled/util/custom_widget/app_snackbar.dart';
+import 'package:untitled/util/custom_widget/custom_button.dart';
+import 'package:untitled/util/custom_widget/custom_textfiled.dart';
+import 'package:untitled/util/custom_widget/customhead_text.dart';
 import 'package:untitled/util/hide_keyboard.dart';
 import 'package:untitled/util/image_resources.dart';
 import 'package:get/get.dart';
@@ -113,16 +110,21 @@ class SignupScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 50.h),
-                  CustomButton(
-                      text: AppString.continueSpelling,
-                      onTap: () async {
-                        if (signUpController.signUpFormKey.currentState!
-                            .validate()) {
-                          HideKeyboard.hideKeyboardInApp(context);
+                 Obx(() =>  CustomButton(
+                   isLoading:signUpController.isLoading.value,
+                   text: AppString.continueSpelling,
+                   onTap: () async {
+                     if (signUpController.signUpFormKey.currentState!
+                         .validate()) {
+                       HideKeyboard.hideKeyboardInApp(context);
+                       if(AppValidator.emailValidation(signUpController.email.text)){
                          signUpController.Singup();
-
-                        }
-                      }),
+                       }
+                       else{
+                         AppSnackBar(AppString.error, AppString.emailNotValid);
+                       }
+                     }
+                   }, ),),
                   SizedBox(
                     height: 30.0.h,
                   ),

@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/helper/app_preferences.dart';
 import 'package:untitled/util/routes.dart';
@@ -21,14 +20,13 @@ class SplashController extends GetxController{
     if(AppPreference.getBoolean(AppString.isLogin)){
       Get.offAndToNamed(Routes.bottomNavBarScreen);
     }
-    else if(!AppPreference.getBoolean(AppString.isLogin)){
-      Get.offAndToNamed(Routes.chooseGuide);
+    else if(AppPreference.getBoolean(AppString.isLogin)==false){
+      Get.offAndToNamed(Routes.accountType);
     }
     else
     {
       Get.offAndToNamed(Routes.onBoarding);
     }
-
   }
 
 }

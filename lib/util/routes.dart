@@ -10,7 +10,7 @@ import 'package:untitled/module/signin/forget_password/enterotp_screen.dart';
 import 'package:untitled/module/signin/forget_password/forgetpassword_screen.dart';
 import 'package:untitled/module/signin/forget_password/createnew_password.dart';
 import 'package:untitled/module/signup/screen/choose_guide.dart';
-import 'package:untitled/module/splash_screen/screen/SplashScreen.dart';
+import 'package:untitled/module/splash_screen/screen/splash_screen.dart';
 import 'package:untitled/module/onboarding_screen/account_type_screen.dart';
 import 'package:untitled/module/onboarding_screen/onbording_screen.dart';
 import 'package:untitled/module/signup/screen/profile_image.dart';
@@ -45,7 +45,7 @@ mixin Routes {
 
   static List<GetPage<dynamic>> pages = [
     GetPage(name: splashscreen, page: () => SplashScreen()),
-    GetPage(name: onBoarding, page: () => const OnBoardingScreen()),
+    GetPage(name: onBoarding, page: () =>  OnBoardingScreen()),
     GetPage(name: accountType, page: () => const AccountTypeScreen()),
     GetPage(name: signInScreen, page: () => SignInScreen()),
     GetPage(name: signupScreen, page: () =>  SignupScreen()),

@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/custom_widget/app_snackbar.dart';
+import 'package:untitled/util/helper/app_preferences.dart';
 import 'package:untitled/util/helper/toast_helper.dart';
 import 'package:untitled/util/routes.dart';
 
@@ -10,8 +14,8 @@ class ForgetPasswordController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    checkemail();
   }
+  RxBool isLoading=false.obs;
 
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -20,18 +24,19 @@ class ForgetPasswordController extends GetxController {
 
 
   checkemail() async {
-    try {
-      await FirebaseAuth.instance.sendPasswordResetEmail(
-          email: email.text.toString());
-      Get.toNamed(Routes.enterOtp, arguments: {
-        "email": email.text.toString(),
+    isLoading(true);
+    await FirebaseFirestore.instance.collection("UserDetail").where("email",isEqualTo: email.text.trim()).get().then((value){
+      if(value.docs.isNotEmpty){
+        print("${value.docs.first.id}------------------");
+        isLoading(false);
+        AppPreference.setString(AppString.forgetEmailDocId, value.docs.first.id);
+        Get.offAllNamed(Routes.enterOtp);
       }
-      );
-    }
-    on FirebaseAuthException catch (e) {
-      print(e.code);
-      print(e.message);
-    }
+      else{
+        isLoading(false);
+        AppSnackBar(AppString.error, AppString.emailNotExists);
+      }
+    });
   }
 }
 

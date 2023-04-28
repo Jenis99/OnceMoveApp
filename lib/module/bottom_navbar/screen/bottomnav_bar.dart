@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/module/Chat/screen/chat_screen.dart';
 import 'package:untitled/module/MyOrder/screen/myoder_screen.dart';
-import 'package:untitled/module/Profile/screen/profile_screen.dart';
+import 'package:untitled/module/Profile/screen/user_profile_screen.dart';
 import 'package:untitled/module/bottom_navbar/controller/bottomnavbar_controller.dart';
 import 'package:untitled/module/Home/screen/addservice_screen.dart';
 import 'package:untitled/module/Home/screen/home_screen.dart';

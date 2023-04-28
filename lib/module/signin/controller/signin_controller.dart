@@ -5,14 +5,17 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled/util/app_constant.dart';
 import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/custom_widget/app_snackbar.dart';
 import 'package:untitled/util/helper/app_preferences.dart';
 import 'package:untitled/util/helper/toast_helper.dart';
 import 'package:untitled/util/routes.dart';
+import 'package:untitled/util/validation_utils.dart';
 
 class SignInController extends GetxController {
   // RxBool passwordVisible=false.obs;
   RxString enterEmail = "".obs;
   RxString enterPassword = "".obs;
+  RxBool isLoading = false.obs;
 
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -20,61 +23,29 @@ class SignInController extends GetxController {
   GlobalKey<FormState> signInFormKey = GlobalKey<FormState>();
 
   SignIn() async {
-    print(email.text);
-    await FirebaseFirestore.instance
-        .collection("UserDetail")
-        .where(
-            /*"email",isEqualTo: email.text.toString()*/
-            "email",
-            isEqualTo: email.text.toLowerCase().trim(),)
-        .get()
-        .then((value) async {
-          print("value.docs.length-----------------${value.docs.length}-----------------------");
+    isLoading(true);
+      await FirebaseFirestore.instance
+          .collection("UserDetail")
+          .where(
+        "email",
+        isEqualTo: email.text.trim(),
+      )
+          .get()
+          .then((value) async {
+        if (value.docs.isNotEmpty) {
+          isLoading(false);
+          if (value.docs.first.data()["password"] == password.text.trim()) {
+            AppPreference.setString(AppConstant.userId, value.docs.first.id);
+            Get.offAllNamed(Routes.bottomNavBarScreen);
+            AppPreference.setBoolean(AppString.isLogin, value: true);
+          } else {
+            AppSnackBar(AppString.error, AppString.plsEnterPass);
+          }
+        } else {
+          isLoading(false);
+          AppSnackBar(AppString.error, AppString.emailNotExists);
+        }
+      });
+    }
 
-
-     if(value.docs.isNotEmpty && value.docs.first.data()["password"]==password.text.trim()){
-       // print("value.docs.first.data-----------${value.docs.first.data()["password"]}--------------------------");
-       AppPreference.setString(AppConstant.userId,value.docs.first.id );
-       Get.offAllNamed(Routes.bottomNavBarScreen);
-       AppPreference.setBoolean(AppString.isLogin, value: true);
-
-
-       // SharedPreferences prefs= await SharedPreferences.getInstance();
-       // prefs.setString("islogin", "true");
-     }
-     else{
-       // print("value.docs.first.data-----------${value.docs.first.data()["password"]}--------------------------");
-       AppToast.toastMessage(AppString.plsEnterPass);
-     }
-    });
-
-    // await FirebaseFirestore.instance.collection("UserDetail").get().then((value){
-    //   var data= value.docs;
-    //   print("object----------------${data.length}---------");
-    //   // enterEmail(data?["email"]);
-    //   // print("${data?["email"]}------------------------------");
-    //   // enterPassword(data?["password"]);
-    //   if(enterEmail==email.text.toString()  &&  enterPassword.value==password.text.toString()){
-    //
-    //   }
-    // });
-  }
-//   try {
-//     UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-//       email:email.text.toString(),
-//       password:password.text.toString(),
-//     );
-//
-//     Get.toNamed(Routes.bottomNavBarScreen);
-//     // User signed in successfully
-//   } on FirebaseAuthException catch (e) {
-//     if (e.code == 'user-not-found' || e.code == 'wrong-password') {
-//       AppToast.toastMessage("Please Enter right password");
-//     } else {
-//       AppToast.toastMessage(e.code.toString());
-//     }
-//   } catch (e) {
-//     print(" Handle other errors which is not definded");
-//   }
-// }
 }

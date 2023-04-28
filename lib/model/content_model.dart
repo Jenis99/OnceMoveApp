@@ -1,33 +1,28 @@
+import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/image_resources.dart';
 
-class UnbordingContent {
+class OnbordingContent {
   String image;
   String title;
   String discription;
 
-  UnbordingContent({required this.image,required this.title,required this.discription});
+  OnbordingContent({required this.image,required this.title,required this.discription});
 }
 
-List<UnbordingContent> contents = [
-  UnbordingContent(
-      title: 'Lorem ipsum dolor sit 1',
+List<OnbordingContent> contents = [
+  OnbordingContent(
+      title: AppString.onBordIngLorem,
       image: ImageRes.onBoarding,
-      discription: "Posuere fringilla adipiscing tincidunt viverra nisi "
-          "massa enim vestibulum. Eget amet enim nisi sit "
-          "turpis tincidunt sit.i."
+      discription: AppString.lorem
   ),
-  UnbordingContent(
-      title: 'Lorem ipsum dolor sit 2',
+  OnbordingContent(
+      title: AppString.onBordIngLorem,
       image: ImageRes.onBoarding,
-      discription: "Posuere fringilla adipiscing tincidunt viverra nisi "
-          "massa enim vestibulum. Eget amet enim nisi sit "
-          "turpis tincidunt sit.i."
+      discription: AppString.lorem
   ),
-  UnbordingContent(
-      title: 'Lorem ipsum dolor sit 3',
+  OnbordingContent(
+      title: AppString.onBordIngLorem,
       image: ImageRes.onBoarding,
-      discription: "Posuere fringilla adipiscing tincidunt viverra nisi "
-          "massa enim vestibulum. Eget amet enim nisi sit "
-          "turpis tincidunt sit.i."
+      discription: AppString.lorem
   ),
 ];

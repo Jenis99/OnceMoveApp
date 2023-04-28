@@ -1,4 +1,4 @@
-#Thu Apr 27 18:59:46 IST 2023
+#Fri Apr 28 19:10:46 IST 2023
 base.0=C\:\\Users\\Admin\\StudioProjects\\OnceMove\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

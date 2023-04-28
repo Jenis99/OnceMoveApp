@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:otp_text_field/otp_field.dart';
+import 'package:untitled/util/app_string.dart';
+import 'package:untitled/util/custom_widget/app_snackbar.dart';
 import 'package:untitled/util/helper/toast_helper.dart';
 import 'package:untitled/util/routes.dart';
 
@@ -15,14 +17,13 @@ class EnterOtpController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    timeout();
     generateOTP();
   }
 
   timeout() {
     Timer.periodic(const Duration(seconds: 1), (timer) {
       second--;
-      if (second == 0) {
+      if (second.value == 0) {
         timer.cancel();
       }
     });
@@ -31,21 +32,23 @@ class EnterOtpController extends GetxController {
 void resendotp(){
     second(60);
     generateOTP();
+    print("resendOtp--------------");
   }
 
 
   generateOTP() {
+    timeout();
     randomNumber(random.nextInt(9000) + 1000);
-    AppToast.toastMessage("${randomNumber.value}");
+    AppSnackBar(AppString.successful, randomNumber.value.toString());
 
   }
   verifyOTP({required int pinNumber}){
     if(pinNumber==randomNumber.value){
-      AppToast.toastMessage("Now you able to set new password");
+      AppSnackBar(AppString.successful, AppString.youAbleTOSetPass);
       Get.toNamed(Routes.setNewPassword);
     }
     else{
-      AppToast.toastMessage("Please Enter Valid OTP");
+      AppSnackBar(AppString.successful, AppString.enterValidOtp);
     }
   }
 }

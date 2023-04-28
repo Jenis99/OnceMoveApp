@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:untitled/module/signup/controller/choose_controller.dart';
-import 'package:untitled/util/CustomWidget/custom_button.dart';
-import 'package:untitled/util/CustomWidget/customhead_text.dart';
 import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
+import 'package:untitled/util/custom_widget/custom_button.dart';
+import 'package:untitled/util/custom_widget/customhead_text.dart';
 import 'package:untitled/util/image_resources.dart';
 import 'package:untitled/util/routes.dart';
 
@@ -104,7 +104,7 @@ class _choose_guideState extends State<choose_guide> {
                          ),
                        ),
                        SizedBox(width: 8.w,),
-                       AppText(text:AppString.fontPoppins,
+                       AppText(text:AppString.someoneToGuide,
                          fontSize: 18.sp,
                          fontFamily: AppString.fontPoppins,
                        ),
