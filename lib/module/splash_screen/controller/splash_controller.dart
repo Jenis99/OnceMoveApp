@@ -20,7 +20,7 @@ class SplashController extends GetxController{
     if(AppPreference.getBoolean(AppString.isLogin)){
       Get.offAndToNamed(Routes.bottomNavBarScreen);
     }
-    else if(AppPreference.getBoolean(AppString.isLogin)==false){
+    else if(!AppPreference.getBoolean(AppString.isLogin)){
       Get.offAndToNamed(Routes.accountType);
     }
     else
