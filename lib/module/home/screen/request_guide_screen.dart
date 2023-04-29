@@ -211,7 +211,7 @@ class _RequestGuideScreenState extends State<RequestGuideScreen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 10).w,
+                padding: EdgeInsets.only(bottom: 10.h),
                 child: CustomButton(
                     onTap: () {
                        Get.toNamed(Routes.addServiceScreen,arguments: {

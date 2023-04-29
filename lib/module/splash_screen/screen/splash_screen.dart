@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/module/onboarding_screen/onbording_screen.dart';
 import 'package:untitled/util/image_resources.dart';
 import 'package:get/get.dart';
-import 'package:untitled/util/routes.dart';
-import 'package:untitled/util/sizeutils.dart';
 
 
 import '../controller/splash_controller.dart';

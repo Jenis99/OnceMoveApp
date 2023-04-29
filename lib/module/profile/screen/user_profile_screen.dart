@@ -1,18 +1,23 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/module/profile/controller/user_profile_controller.dart';
 import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/app_text.dart';
+import 'package:untitled/util/color_resources.dart';
 import 'package:untitled/util/custom_profile_options.dart';
 import 'package:untitled/util/custom_widget/custom_network_image.dart';
 import 'package:untitled/util/custom_widget/customhead_text.dart';
 import 'package:untitled/util/helper/app_preferences.dart';
 import 'package:untitled/util/icon_resources.dart';
 import 'package:get/get.dart';
+import 'package:untitled/util/image_resources.dart';
 
 class ProfileScreen extends StatelessWidget {
-  UserProfileController profileController = Get.put(UserProfileController());
+  UserProfileController userProfileController =
+      Get.put(UserProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +45,133 @@ class ProfileScreen extends StatelessWidget {
             Center(
               child: Column(
                 children: [
-                  CustomNetworkImage(
-                    image: AppPreference.getString(AppString.userProfileUrl),
-                    height: 120.h,
-                    width: 120.w,
+                  Stack(
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.center,
+                        height: 120.h,
+                        width: 120.w,
+                        child: Obx(
+                              () => (userProfileController.isLoading.value)
+                              ? SizedBox(
+                            child: CircularProgressIndicator(
+                              color: ColorRes.primaryColor,
+                            ),
+                          ): CustomNetworkImage(
+                                height: 120.h,
+                              width: 120.w,
+                              image: (userProfileController
+                                  .downloadURL.isEmpty)
+                                  ? AppPreference.getString(
+                                  AppString.userProfileUrl)
+                                  : userProfileController.downloadURL.value),
+                          //         Container(
+                          //     width: 120.h,
+                          //     height: 120.h,
+                          //     decoration: BoxDecoration(
+                          //       shape: BoxShape.circle,
+                          //       image: userProfileController.selectedfile.isEmpty
+                          //           ?  DecorationImage(
+                          //           fit: BoxFit.cover,
+                          //           image: (CustomNetworkImage(
+                          //             AppPreference.getString(AppString.userProfileUrl),
+                          //           )))
+                          //           : DecorationImage(
+                          //         fit: BoxFit.cover,
+                          //         image: FileImage(
+                          //           File(userProfileController
+                          //               .selectedfile.value ??
+                          //               ""),
+                          //         ),
+                          //       ),
+                          //     )
+                          // ),
+                        ),
+                      ),
+                      // Obx(
+                      //   () => (userProfileController.isLoading.value)
+                      //       ? SizedBox(
+                      //     height: 120.h,
+                      //     width: 120.w,
+                      //     child: CircularProgressIndicator(
+                      //             color: ColorRes.primaryColor,
+                      //           ),
+                      //       )
+                      //       : CustomNetworkImage(
+                      //           height: 120.h,
+                      //           width: 120.w,
+                      //           image: (userProfileController
+                      //                   .selectedfile.isEmpty)
+                      //               ? AppPreference.getString(
+                      //                   AppString.userProfileUrl)
+                      //               : userProfileController.downloadURL.value),
+                      //   //         Container(
+                      //   //     width: 120.h,
+                      //   //     height: 120.h,
+                      //   //     decoration: BoxDecoration(
+                      //   //       shape: BoxShape.circle,
+                      //   //       image: userProfileController.selectedfile.isEmpty
+                      //   //           ?  DecorationImage(
+                      //   //           fit: BoxFit.cover,
+                      //   //           image: (CustomNetworkImage(
+                      //   //             AppPreference.getString(AppString.userProfileUrl),
+                      //   //           )))
+                      //   //           : DecorationImage(
+                      //   //         fit: BoxFit.cover,
+                      //   //         image: FileImage(
+                      //   //           File(userProfileController
+                      //   //               .selectedfile.value ??
+                      //   //               ""),
+                      //   //         ),
+                      //   //       ),
+                      //   //     )
+                      //   // ),
+                      // ),
+                      // Image.file(profileController.selectedfile!)),
+                      Positioned(
+                        bottom: 1,
+                        right: 8,
+                        child: GestureDetector(
+                          onTap: () async {
+                            AlertDialog alert = AlertDialog(
+                              title: AppText(text: AppString.selectImg),
+                              content: AppText(text: AppString.selectImgFrom),
+                              actions: [
+                                IconButton(
+                                    onPressed: () async {
+                                      Get.back();
+                                      userProfileController.pickCameraImage();
+                                    },
+                                    icon: const Icon(Icons.camera)),
+                                IconButton(
+                                    onPressed: () async {
+                                      Get.back();
+                                      userProfileController.pickGalleryImage();
+                                    },
+                                    icon: const Icon(Icons.image))
+                              ],
+                            );
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return alert;
+                              },
+                            );
+                          },
+                          child: Image.asset(
+                            ImageRes.cameraImg,
+                            height: 31.h,
+                            width: 31.w,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
+                  // CustomNetworkImage(
+                  //   image: AppPreference.getString(AppString.userProfileUrl),
+                  //   height: 120.h,
+                  //   width: 120.w,
+                  // ),
                   SizedBox(
                     height: 12.h,
                   ),
@@ -62,7 +189,7 @@ class ProfileScreen extends StatelessWidget {
             ProfilOption(
               imgIcon: IconRes.followingIcon,
               text: AppString.following,
-              onTap: (){},
+              onTap: () {},
             ),
             SizedBox(
               height: 21.h,
@@ -70,7 +197,7 @@ class ProfileScreen extends StatelessWidget {
             ProfilOption(
               imgIcon: IconRes.settingIcon,
               text: AppString.setting,
-              onTap: (){},
+              onTap: () {},
             ),
             SizedBox(
               height: 21.h,
@@ -78,7 +205,7 @@ class ProfileScreen extends StatelessWidget {
             ProfilOption(
               imgIcon: IconRes.privacyPolicyIcon,
               text: AppString.privacyPolicy,
-              onTap: (){},
+              onTap: () {},
             ),
             SizedBox(
               height: 21.h,
@@ -86,7 +213,7 @@ class ProfileScreen extends StatelessWidget {
             ProfilOption(
               imgIcon: IconRes.termsOfUseIcon,
               text: AppString.termsOfUse,
-              onTap: (){},
+              onTap: () {},
             ),
             SizedBox(
               height: 21.h,
@@ -94,7 +221,7 @@ class ProfileScreen extends StatelessWidget {
             ProfilOption(
               imgIcon: IconRes.helpIcon,
               text: AppString.helpCenter,
-              onTap: (){},
+              onTap: () {},
             ),
             SizedBox(
               height: 21.h,
@@ -102,14 +229,14 @@ class ProfileScreen extends StatelessWidget {
             ProfilOption(
               imgIcon: IconRes.logOutIcon,
               text: AppString.logout,
-              onTap: (){
+              onTap: () {
                 AlertDialog alert = AlertDialog(
                   title: Text(AppString.logout),
                   content: Text(AppString.areYouSure),
                   actions: [
                     TextButton(
                         onPressed: () {
-                          profileController.LogOut();
+                          userProfileController.LogOut();
                         },
                         child: Text(AppString.logout)),
                     TextButton(

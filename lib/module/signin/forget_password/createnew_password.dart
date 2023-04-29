@@ -80,7 +80,7 @@ class CreateNewPassword extends StatelessWidget {
                         newPasswordController.setPassword();
                       }
                       else{
-                        AppSnackBar(AppString.error, AppString.passwordNotMatch);
+                        AppSnackBar(title: AppString.error,subtitle:  AppString.passwordNotMatch);
                       }
                     }
                   })

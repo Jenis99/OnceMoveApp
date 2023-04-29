@@ -6,6 +6,8 @@ class AppString{
   static String isLogin="isLogin";
   static String generalUser="General User";
   static String guid="Guid";
+  static String noData="Their is no data";
+  static String userName="Username";
   static String following="Following";
   static String selectImgFrom="Choose option for image where you want choose from";
   static String selectImg="Select Image";
@@ -15,6 +17,8 @@ class AppString{
   static String youAbleTOSetPass="Now you able to set new password";
   static String takeProfessional="Take Professional";
   static String or="OR";
+  static String loginSuccessful="Log in successful";
+  static String onBoardingValue="onBoardingValue";
   static String enterValidOtp="Please enter valid Otp";
   static String userProfileUrl="userProfileUrl";
   static String userEmail="userEmail";
@@ -28,7 +32,7 @@ class AppString{
   static String seventeen="17:00";
   static String imgUploaded="Your profile Image is saved";
   static String four="4";
-  static String error="Error";
+  static String error="error";
   static String checkYourEmail="Check Your Email";
   static String emailNotExists="Your email does not exists";
   static String emailNotValid="Your email is not valid";

@@ -88,14 +88,14 @@ class _ProfileImageState extends State<ProfileImage> {
                               actions: [
                                 IconButton(
                                     onPressed: () async {
-                                      Get.back();
                                       profileController.pickCameraImage();
+                                      Get.back();
                                     },
                                     icon: const Icon(Icons.camera)),
                                 IconButton(
                                     onPressed: () async {
-                                      Get.back();
                                       profileController.pickGalleryImage();
+                                      Get.back();
                                     },
                                     icon: const Icon(Icons.image))
                               ],
@@ -129,7 +129,7 @@ class _ProfileImageState extends State<ProfileImage> {
                  profileController.uploadImage();
                }
                else{
-                 AppSnackBar(AppString.error, AppString.plsSelectImg);
+                 AppSnackBar(title: AppString.error, subtitle: AppString.plsSelectImg);
                }
              },
              text: AppString.continueSpelling,

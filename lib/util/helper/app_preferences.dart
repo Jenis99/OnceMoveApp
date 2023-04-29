@@ -81,6 +81,10 @@ class AppPreference {
     final bool? value = _prefs.getBool(key);
     return value ?? false;
   }
+  static bool getFirstTimeBoolean(String key) {
+    final bool? value = _prefs.getBool(key);
+    return value ?? true;
+  }
 
   static bool getSpeechMuteBoolean(String key) {
     final bool? value = _prefs.getBool(key);

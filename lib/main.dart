@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -7,14 +9,19 @@ import 'package:get/get.dart';
 
 import 'util/routes.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await AppPreference.initMySharedPreferences();
 
-  runApp(const MyApp());
+  runApp(MyApp()
+    // DevicePreview(
+    //   enabled: !kReleaseMode,
+    //   builder: (context) => MyApp(), // Wrap your app
+    // ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -38,7 +45,8 @@ class MyApp extends StatelessWidget {
                 body: GestureDetector(
                   onTap: () {
                     var currentFocus = FocusScope.of(context);
-                    if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+                    if (!currentFocus.hasPrimaryFocus &&
+                        currentFocus.focusedChild != null) {
                       FocusManager.instance.primaryFocus!.unfocus();
                     }
                   },
@@ -47,8 +55,7 @@ class MyApp extends StatelessWidget {
               );
             },
           );
-        }
-    );
+        });
   }
 }
 
@@ -56,4 +63,3 @@ class MyApp extends StatelessWidget {
 // web       1:366951219724:web:802402f6227cb9e8752429
 // android   1:366951219724:android:075fc89e1c2a354a752429
 // ios       1:366951219724:ios:c76a3884f9e96b90752429
-

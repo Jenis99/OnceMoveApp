@@ -17,15 +17,17 @@ class SplashController extends GetxController{
 
   void openScreen() async {
 
-    if(AppPreference.getBoolean(AppString.isLogin)){
-      Get.offAndToNamed(Routes.bottomNavBarScreen);
-    }
-    else if(!AppPreference.getBoolean(AppString.isLogin)){
-      Get.offAndToNamed(Routes.accountType);
+    if(AppPreference.getFirstTimeBoolean(AppString.onBoardingValue)){
+      Get.offAndToNamed(Routes.onBoarding);
     }
     else
     {
-      Get.offAndToNamed(Routes.onBoarding);
+      if(AppPreference.getBoolean(AppString.isLogin)){
+        Get.offAndToNamed(Routes.bottomNavBarScreen);
+      }
+      else {
+        Get.offAndToNamed(Routes.accountType);
+      }
     }
   }
 

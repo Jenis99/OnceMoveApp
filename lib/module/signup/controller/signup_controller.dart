@@ -10,6 +10,7 @@ import 'package:untitled/util/routes.dart';
 class SignUpController extends GetxController {
 
   TextEditingController email = TextEditingController();
+  TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirm = TextEditingController();
   RxBool isLoading=false.obs;
@@ -24,25 +25,26 @@ class SignUpController extends GetxController {
         if(value.docs.isEmpty){
           FirebaseFirestore.instance.collection("UserDetail").add({
             "email":email.text.trim(),
+            "username":username.text,
             "password":password.text.trim(),
           }).then((value) async {
             isLoading(false);
             AppPreference.setString(AppConstant.userId,value.id );
 
             Get.toNamed(Routes.profileImage);
-            Get.snackbar(AppString.successful, AppString.accCreateSuccess);
+            AppSnackBar(title: AppString.successful,subtitle:  AppString.accCreateSuccess);
             AppPreference.setBoolean(AppString.isLogin, value: true);
           });
 
         }
         else{
           isLoading(false);
-          AppSnackBar(AppString.error, AppString.emailAlreadyExits);
+          AppSnackBar(title: AppString.error, subtitle: AppString.emailAlreadyExits);
         }
       });
     }
     else{
-      AppSnackBar(AppString.error, AppString.passwordNotMatch);
+      AppSnackBar(title: AppString.error, subtitle: AppString.passwordNotMatch);
     }
   }
 

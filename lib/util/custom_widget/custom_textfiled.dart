@@ -42,13 +42,13 @@ class CustomTextfield extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AppText(
-               text: name??"",
-                    fontSize: 18.sp,
-                    fontFamily: AppString.fontPoppins,
-                    color: ColorRes.textColor,
-                    fontWeight: FontWeight.w400
-              ),
+              (name!=null)?AppText(
+                  text: name??"",
+                  fontSize: 18.sp,
+                  fontFamily: AppString.fontPoppins,
+                  color: ColorRes.textColor,
+                  fontWeight: FontWeight.w400
+              ):SizedBox(),
               SizedBox(
                 height: 6.h,
               ),

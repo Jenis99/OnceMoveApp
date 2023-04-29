@@ -53,7 +53,7 @@ class ProfileController extends GetxController {
               "profileUrl":fileurl,
             }).then((value) {
           isLoading(false);
-          AppSnackBar(AppString.successful, AppString.imgUploaded);
+          AppSnackBar(title:AppString.successful,subtitle:  AppString.imgUploaded);
           Get.toNamed(Routes.chooseGuide);
         });
       });

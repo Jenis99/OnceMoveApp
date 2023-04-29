@@ -11,8 +11,8 @@ import 'package:untitled/module/signin/forget_password/forgetpassword_screen.dar
 import 'package:untitled/module/signin/forget_password/createnew_password.dart';
 import 'package:untitled/module/signup/screen/choose_guide.dart';
 import 'package:untitled/module/splash_screen/screen/splash_screen.dart';
-import 'package:untitled/module/onboarding_screen/account_type_screen.dart';
-import 'package:untitled/module/onboarding_screen/onbording_screen.dart';
+import 'package:untitled/module/onboarding_screen/screen/account_type_screen.dart';
+import 'package:untitled/module/onboarding_screen/screen/onbording_screen.dart';
 import 'package:untitled/module/signup/screen/profile_image.dart';
 import 'package:untitled/module/signin/signin_screen.dart';
 import 'package:untitled/module/signup/screen/signup_screen.dart';

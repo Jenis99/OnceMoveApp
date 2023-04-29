@@ -10,7 +10,6 @@ import 'package:untitled/util/custom_widget/custom_button.dart';
 import 'package:untitled/util/custom_widget/custom_dropdown.dart';
 import 'package:untitled/util/custom_widget/custom_textfiled.dart';
 import 'package:untitled/util/custom_widget/customhead_text.dart';
-import 'package:untitled/util/helper/toast_helper.dart';
 import 'package:untitled/util/image_resources.dart';
 import 'package:get/get.dart';
 import 'package:untitled/util/routes.dart';
@@ -109,7 +108,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                             formattedDate; //set foratted date to TextField value.
                                       });
                                     } else {
-                                      AppSnackBar(AppString.error, AppString.dateIsNotSelected);
+                                      AppSnackBar(title: AppString.error, subtitle: AppString.dateIsNotSelected);
                                     }
                                   },
                                 )),
@@ -131,7 +130,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                           .format(context)
                                           .toString(); //set the value of text field.
                                     } else {
-                                      AppSnackBar(AppString.error, AppString.timeIsNotSelected);
+                                      AppSnackBar(title: AppString.error, subtitle: AppString.timeIsNotSelected);
                                     }
                                   },
                                 ))

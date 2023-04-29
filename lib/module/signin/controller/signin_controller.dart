@@ -35,15 +35,17 @@ class SignInController extends GetxController {
         if (value.docs.isNotEmpty) {
           isLoading(false);
           if (value.docs.first.data()["password"] == password.text.trim()) {
+
             AppPreference.setString(AppConstant.userId, value.docs.first.id);
+            AppSnackBar(title: AppString.successful , subtitle: AppString.loginSuccessful);
             Get.offAllNamed(Routes.bottomNavBarScreen);
             AppPreference.setBoolean(AppString.isLogin, value: true);
           } else {
-            AppSnackBar(AppString.error, AppString.plsEnterPass);
+            AppSnackBar(title: AppString.error,subtitle:  AppString.plsEnterPass);
           }
         } else {
           isLoading(false);
-          AppSnackBar(AppString.error, AppString.emailNotExists);
+          AppSnackBar(title: AppString.error,subtitle:  AppString.emailNotExists);
         }
       });
     }

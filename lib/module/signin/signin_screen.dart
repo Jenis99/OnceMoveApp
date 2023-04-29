@@ -133,12 +133,8 @@ class SignInScreen extends StatelessWidget {
                            signInController.SignIn();
                          }
                          else{
-                           AppSnackBar(AppString.error, AppString.emailNotValid);
+                           AppSnackBar(title: AppString.error,subtitle:  AppString.emailNotValid);
                          }
-                       }
-                       else{
-                         // Get.snackbar("title", "message",colorText: ColorRes.primaryColor );
-                         // AppSnackBar("", "");
                        }
                      }),),
                   SizedBox(

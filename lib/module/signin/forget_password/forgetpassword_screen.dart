@@ -81,7 +81,7 @@ class ForgetPassword extends StatelessWidget {
                             forgetController.checkemail();
                           }
                           else{
-                            AppSnackBar(AppString.error , AppString.emailNotValid);
+                            AppSnackBar(title:AppString.error , subtitle: AppString.emailNotValid);
                           }
                         }
                       }),),

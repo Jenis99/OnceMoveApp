@@ -11,44 +11,52 @@ import 'package:untitled/util/routes.dart';
 class EnterOtpController extends GetxController {
   RxInt second = 60.obs;
   final random = Random();
-  RxInt randomNumber=0.obs;
+  RxInt randomNumber = 0.obs;
   OtpFieldController otpController = OtpFieldController();
-
+  Timer? timer;
   @override
   void onInit() {
     super.onInit();
-    generateOTP();
+    timeout();
+    Future.delayed(
+      const Duration(seconds: 1),
+          () => generateOTP(),);
   }
 
   timeout() {
-    Timer.periodic(const Duration(seconds: 1), (timer) {
-      second--;
-      if (second.value == 0) {
-        timer.cancel();
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (second.value > 0) {
+        second--;
       }
     });
   }
 
-void resendotp(){
+  void resendotp() {
     second(60);
     generateOTP();
-    print("resendOtp--------------");
   }
-
 
   generateOTP() {
-    timeout();
     randomNumber(random.nextInt(9000) + 1000);
-    AppSnackBar(AppString.successful, randomNumber.value.toString());
+    AppSnackBar(title: AppString.successful , subtitle: randomNumber.value.toString());
+       print("-----------------------${randomNumber.value}");
 
   }
-  verifyOTP({required int pinNumber}){
-    if(pinNumber==randomNumber.value){
-      AppSnackBar(AppString.successful, AppString.youAbleTOSetPass);
+
+  verifyOTP({required int pinNumber}) {
+    if (pinNumber == randomNumber.value) {
+      AppSnackBar(
+          title: AppString.successful, subtitle: AppString.youAbleTOSetPass);
       Get.toNamed(Routes.setNewPassword);
+    } else {
+      AppSnackBar(
+          title: AppString.successful, subtitle: AppString.enterValidOtp);
     }
-    else{
-      AppSnackBar(AppString.successful, AppString.enterValidOtp);
-    }
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
   }
 }

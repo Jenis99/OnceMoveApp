@@ -59,6 +59,18 @@ class SignupScreen extends StatelessWidget {
                     height: 19.h,
                   ),
                   CustomTextfield(
+                    name: AppString.userName,
+                    isPassword: false,
+                    controller: signUpController.username,
+                    keyType: TextInputType.text,
+                    hintText: AppString.alexHintText,
+                    suffixIcon: null,
+                    validator: AppValidator.userNameValidation,
+                  ),
+                  SizedBox(
+                    height: 19.h,
+                  ),
+                  CustomTextfield(
                     name: AppString.password,
                     isPassword: true,
                     controller: signUpController.password,
@@ -121,7 +133,7 @@ class SignupScreen extends StatelessWidget {
                          signUpController.Singup();
                        }
                        else{
-                         AppSnackBar(AppString.error, AppString.emailNotValid);
+                         AppSnackBar(title: AppString.error, subtitle:  AppString.emailNotValid);
                        }
                      }
                    }, ),),
