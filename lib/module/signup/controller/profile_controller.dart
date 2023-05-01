@@ -3,8 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled/util/app_constant.dart';
 import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/custom_widget/app_snackbar.dart';
@@ -31,33 +29,28 @@ class ProfileController extends GetxController {
   pickCameraImage() async {
     XFile? photo = await _picker.pickImage(source: ImageSource.camera);
     selectedfile.value = photo!.path;
+    Get.back();
   }
 
   pickGalleryImage() async {
     XFile? photo = await _picker.pickImage(source: ImageSource.gallery);
     selectedfile.value = photo!.path;
+    Get.back();
   }
 
   Future uploadImage() async {
     isLoading(true);
     filename(Uuid().v4());
-    await FirebaseStorage.instance
-        .ref(filename.value.toString())
-        .putFile(File(selectedfile.value))
-        .whenComplete(() {})
-        .then((filedata) async {
+    await FirebaseStorage.instance.ref(filename.value.toString()).putFile(File(selectedfile.value)).whenComplete(() {}).then((filedata) async {
       await filedata.ref.getDownloadURL().then((fileurl) async {
-
-        await FirebaseFirestore.instance.collection("UserDetail").doc(AppPreference.getString(AppConstant.userId)).update(
-            {
-              "profileUrl":fileurl,
-            }).then((value) {
+        await FirebaseFirestore.instance.collection("UserDetail").doc(AppPreference.getString(AppConstant.userId)).update({
+          "profileUrl": fileurl,
+        }).then((value) {
           isLoading(false);
-          AppSnackBar(title:AppString.successful,subtitle:  AppString.imgUploaded);
+          AppSnackBar(title: AppString.successful, subtitle: AppString.imgUploaded);
           Get.toNamed(Routes.chooseGuide);
         });
       });
     });
   }
 }
-

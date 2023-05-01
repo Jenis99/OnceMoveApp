@@ -10,23 +10,13 @@ import 'package:untitled/util/custom_widget/custom_button.dart';
 import 'package:untitled/util/custom_widget/custom_dropdown.dart';
 import 'package:untitled/util/custom_widget/custom_textfiled.dart';
 import 'package:untitled/util/custom_widget/customhead_text.dart';
-import 'package:untitled/util/icon_resources.dart';
 import 'package:untitled/util/image_resources.dart';
 
 class FilterScreen extends StatelessWidget {
-  FilterController filterController = Get.put(FilterController());
-
-  RxString tFormatDropDownValue = "".obs;
-  RxList tPlayerDropDownList = ['full assistance', 'little assistance'].obs;
-  RxString selectedRun = "".obs;
-  RxString selectedSupport = "".obs;
-  RxList supportNeededList = ['full assistance', 'little assistance'].obs;
-
-  RxList typeOfHourList = ['Easy Run', 'Long Run', 'Intervals', 'Race'].obs;
+  final FilterController filterController = Get.put(FilterController());
 
   @override
   Widget build(BuildContext context) {
-    var selected;
     return Scaffold(
       body: SafeArea(
         child: LayoutBuilder(builder: (context, constraint) {
@@ -55,7 +45,7 @@ class FilterScreen extends StatelessWidget {
                       SizedBox(
                         height: 30.h,
                       ),
-                      AppText(text:AppString.findGuide),
+                      AppText(text: AppString.findGuide),
                       SizedBox(
                         height: 30.h,
                       ),
@@ -108,12 +98,11 @@ class FilterScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               AppText(
-                                text:AppString.typeOfRun,
-                                    fontSize: 18.sp,
-                                    fontFamily: AppString.fontPoppins,
-                                    color: ColorRes.textColor,
-                                    fontWeight: FontWeight.w400
-                              ),
+                                  text: AppString.typeOfRun,
+                                  fontSize: 18.sp,
+                                  fontFamily: AppString.fontPoppins,
+                                  color: ColorRes.textColor,
+                                  fontWeight: FontWeight.w400),
                               SizedBox(
                                 height: 6.h,
                               ),
@@ -122,7 +111,8 @@ class FilterScreen extends StatelessWidget {
                       SizedBox(
                         height: 19.h,
                       ),
-                      AppText(text: AppString.typeOfRun,
+                      AppText(
+                        text: AppString.typeOfRun,
                         fontSize: 18.sp,
                         color: ColorRes.textColor,
                         fontWeight: FontWeight.w400,
@@ -132,16 +122,17 @@ class FilterScreen extends StatelessWidget {
                       ),
                       dropDown(
                         text: AppString.longLessHour,
-                        dropDownValue: selectedRun,
-                        dropDownList: typeOfHourList,
+                        dropDownValue: filterController.selectedRunType,
+                        dropDownList: filterController.typeOfHourList,
                         onChanged: (val) async {
-                          selectedRun.value = val.toString();
+                          filterController.selectedRunType = val;
                         },
                       ),
                       SizedBox(
                         height: 6.h,
                       ),
-                      AppText(text: AppString.supportNeeded,
+                      AppText(
+                        text: AppString.supportNeeded,
                         fontSize: 18.sp,
                         color: ColorRes.textColor,
                         fontWeight: FontWeight.w400,
@@ -151,23 +142,12 @@ class FilterScreen extends StatelessWidget {
                       ),
                       dropDown(
                         text: AppString.selectOption,
-                        dropDownValue: selectedSupport,
-                        dropDownList: supportNeededList,
+                        dropDownValue: filterController.selectedSupport,
+                        dropDownList: filterController.supportList,
                         onChanged: (val) async {
-                          selectedSupport.value = val.toString();
+                          filterController.selectedSupport.value = val;
                         },
                       ),
-                      // AppText(text: "this is Button",fontSize: 20.0,),
-                      // dropDown(
-                      //   borderColor: ColorRes.blackColor,
-                      //   onChanged: (val) async {
-                      //     tFormatDropDownValue.value = val.toString();
-                      //   },
-                      // // color: tFormatDropDownValue.value== val.toString()
-                      // //     ? Colors.transparent
-                      // //     : Colors.red,
-                      //   dropDownList: tPlayerDropDownList,
-                      //   dropDownValue: tFormatDropDownValue,
                       // ),
                       SizedBox(
                         height: 5.h,
@@ -180,10 +160,8 @@ class FilterScreen extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 20.w, horizontal: 20.w),
-                        child:
-                            CustomButton(onTap: () {}, text: AppString.search),
+                        padding: EdgeInsets.symmetric(vertical: 20.w, horizontal: 20.w),
+                        child: CustomButton(onTap: () {}, text: AppString.search),
                       ),
                     ],
                   ),

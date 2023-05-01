@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/icon_resources.dart';
 
-class ProfilOption extends StatelessWidget {
+class ProfileOption extends StatelessWidget {
   String imgIcon;
   String text;
   String? icon;
   GestureTapCallback? onTap;
 
 
-  ProfilOption({required this.imgIcon,required this.text, this.icon,required this.onTap});
+  ProfileOption({required this.imgIcon,required this.text, this.icon,required this.onTap});
 
   @override
   Widget build(BuildContext context) {

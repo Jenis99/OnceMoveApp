@@ -15,7 +15,7 @@ import 'package:untitled/util/routes.dart';
 import 'package:untitled/util/validation_utils.dart';
 
 class SignupScreen extends StatelessWidget {
-  SignUpController signUpController = Get.put(SignUpController());
+  final SignUpController signUpController = Get.put(SignUpController());
 
   @override
   Widget build(BuildContext context) {
@@ -47,13 +47,13 @@ class SignupScreen extends StatelessWidget {
                     height: 26.h,
                   ),
                   CustomTextfield(
-                      name: AppString.email,
-                      isPassword: false,
-                      controller: signUpController.email,
-                      keyType: TextInputType.text,
-                      hintText: AppString.alexHintText,
-                      suffixIcon: null,
-                      validator: AppValidator.userEmailValidation,
+                    name: AppString.email,
+                    isPassword: false,
+                    controller: signUpController.email,
+                    keyType: TextInputType.text,
+                    hintText: AppString.alexHintText,
+                    suffixIcon: null,
+                    validator: AppValidator.userEmailValidation,
                   ),
                   SizedBox(
                     height: 19.h,
@@ -94,10 +94,10 @@ class SignupScreen extends StatelessWidget {
                   ),
                   Center(
                     child: AppText(
-                      text:AppString.or,
-                        fontSize: 25.sp,
-                        fontFamily: AppString.fontLato,
-                        fontWeight: FontWeight.bold,
+                      text: AppString.or,
+                      fontSize: 25.sp,
+                      fontFamily: AppString.fontLato,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(height: 46.72.h),
@@ -111,32 +111,29 @@ class SignupScreen extends StatelessWidget {
                             fontSize: 20.sp,
                             fontFamily: AppString.fontLato,
                             decorationColor: ColorRes.primaryColor,
-                            shadows: const [
-                              Shadow(
-                                  color: ColorRes.primaryColor,
-                                  offset: Offset(0, -3))
-                            ],
+                            shadows: const [Shadow(color: ColorRes.primaryColor, offset: Offset(0, -3))],
                             decoration: TextDecoration.underline,
                             decorationThickness: 2,
                           )),
                     ),
                   ),
                   SizedBox(height: 50.h),
-                 Obx(() =>  CustomButton(
-                   isLoading:signUpController.isLoading.value,
-                   text: AppString.continueSpelling,
-                   onTap: () async {
-                     if (signUpController.signUpFormKey.currentState!
-                         .validate()) {
-                       HideKeyboard.hideKeyboardInApp(context);
-                       if(AppValidator.emailValidation(signUpController.email.text)){
-                         signUpController.Singup();
-                       }
-                       else{
-                         AppSnackBar(title: AppString.error, subtitle:  AppString.emailNotValid);
-                       }
-                     }
-                   }, ),),
+                  Obx(
+                    () => CustomButton(
+                      isLoading: signUpController.isLoading.value,
+                      text: AppString.continueSpelling,
+                      onTap: () async {
+                        if (signUpController.signUpFormKey.currentState!.validate()) {
+                          HideKeyboard.hideKeyboardInApp(context);
+                          if (AppValidator.emailValidation(signUpController.email.text)) {
+                            signUpController.Singup();
+                          } else {
+                            AppSnackBar(title: AppString.error, subtitle: AppString.emailNotValid);
+                          }
+                        }
+                      },
+                    ),
+                  ),
                   SizedBox(
                     height: 30.0.h,
                   ),
@@ -148,25 +145,20 @@ class SignupScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       // crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        AppText(
-                          text:AppString.alreadyHaveAcc,
-                              fontSize: 20.sp, color: ColorRes.greyText),
+                        AppText(text: AppString.alreadyHaveAcc, fontSize: 20.sp, color: ColorRes.greyText),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           // mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
                               AppString.capSignIn,
-                              style: TextStyle(
-                                  fontSize: 20.sp,
-                                  color: ColorRes.primaryColor),
+                              style: TextStyle(fontSize: 20.sp, color: ColorRes.primaryColor),
                             ),
                             Container(
                               margin: EdgeInsets.only(top: 1.0).w,
                               height: 1.h,
                               width: 50.w,
-                              decoration:
-                                  BoxDecoration(color: ColorRes.primaryColor),
+                              decoration: BoxDecoration(color: ColorRes.primaryColor),
                             )
                           ],
                         )

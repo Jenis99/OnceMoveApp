@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/app_text.dart';
 import 'package:untitled/util/color_resources.dart';
-import 'package:untitled/util/sizeutils.dart';
 
 class CustomButton extends StatelessWidget {
   bool isLoading;
@@ -50,27 +48,27 @@ class CustomButton extends StatelessWidget {
           border: Border.all(color: borderColor ?? Colors.transparent),
           borderRadius: BorderRadius.circular(50.r),
         ),
-        child:isLoading
+        child: isLoading
             ? SizedBox(
-            height: 40.h,
-            width: 40.h,
-            child: Center(
-              child: CircularProgressIndicator(
-                color: ColorRes.whiteColor,
-              ),
-            ))
-            :  Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-          child: Align(
-              alignment: Alignment.center,
-              child: AppText(
+                height: 40.h,
+                width: 40.h,
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: ColorRes.whiteColor,
+                  ),
+                ))
+            : Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+                child: Align(
+                    alignment: Alignment.center,
+                    child: AppText(
                       text: text,
                       fontWeight: FontWeight.w400,
                       fontSize: 29.sp,
                       fontFamily: AppString.fontPoppins,
                       color: textColor ?? ColorRes.whiteColor,
                     )),
-        ),
+              ),
       ),
     );
   }

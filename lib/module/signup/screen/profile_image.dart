@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/module/signup/controller/profile_controller.dart';
@@ -12,7 +11,6 @@ import 'package:untitled/util/custom_widget/customhead_text.dart';
 import 'package:untitled/util/custom_widget/unordered_list.dart';
 import 'package:untitled/util/image_resources.dart';
 import 'package:get/get.dart';
-import 'package:untitled/util/routes.dart';
 
 class ProfileImage extends StatefulWidget {
   const ProfileImage({Key? key}) : super(key: key);
@@ -22,7 +20,7 @@ class ProfileImage extends StatefulWidget {
 }
 
 class _ProfileImageState extends State<ProfileImage> {
-  ProfileController profileController = Get.put(ProfileController());
+  final ProfileController profileController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +45,7 @@ class _ProfileImageState extends State<ProfileImage> {
                   SizedBox(
                     height: 21.67.h,
                   ),
-                  CustomHeadText(name: "Add Profile Image"),
+                  CustomHeadText(name: AppString.addProfileImage),
                   SizedBox(
                     height: 30.0.h,
                   ),
@@ -55,26 +53,23 @@ class _ProfileImageState extends State<ProfileImage> {
                     children: <Widget>[
                       Obx(
                         () => Container(
-                          width: 120.h,
-                          height: 120.h,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: profileController.selectedfile.isEmpty
-                                ? const DecorationImage(
-                              fit: BoxFit.cover,
-                                    image: (AssetImage(
-                                    ImageRes.profileImg,
-                                  )))
-                                : DecorationImage(
-                              fit: BoxFit.cover,
-                                    image: FileImage(
-                                      File(profileController
-                                              .selectedfile.value ??
-                                          ""),
+                            width: 120.h,
+                            height: 120.h,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: profileController.selectedfile.isEmpty
+                                  ? const DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: (AssetImage(
+                                        ImageRes.profileImg,
+                                      )))
+                                  : DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: FileImage(
+                                        File(profileController.selectedfile.value ?? ""),
+                                      ),
                                     ),
-                                  ),
-                          )
-                        ),
+                            )),
                       ),
                       // Image.file(profileController.selectedfile!)),
                       Positioned(
@@ -89,13 +84,11 @@ class _ProfileImageState extends State<ProfileImage> {
                                 IconButton(
                                     onPressed: () async {
                                       profileController.pickCameraImage();
-                                      Get.back();
                                     },
                                     icon: const Icon(Icons.camera)),
                                 IconButton(
                                     onPressed: () async {
                                       profileController.pickGalleryImage();
-                                      Get.back();
                                     },
                                     icon: const Icon(Icons.image))
                               ],
@@ -122,18 +115,17 @@ class _ProfileImageState extends State<ProfileImage> {
                 ],
               ),
             ),
-           Obx(() => CustomButton(
-             isLoading:profileController.isLoading.value ,
-             onTap: () {
-               if(profileController.selectedfile.isNotEmpty){
-                 profileController.uploadImage();
-               }
-               else{
-                 AppSnackBar(title: AppString.error, subtitle: AppString.plsSelectImg);
-               }
-             },
-             text: AppString.continueSpelling,
-           )),
+            Obx(() => CustomButton(
+                  isLoading: profileController.isLoading.value,
+                  onTap: () {
+                    if (profileController.selectedfile.isNotEmpty) {
+                      profileController.uploadImage();
+                    } else {
+                      AppSnackBar(title: AppString.error, subtitle: AppString.plsSelectImg);
+                    }
+                  },
+                  text: AppString.continueSpelling,
+                )),
           ],
         ),
       ),

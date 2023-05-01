@@ -16,8 +16,7 @@ import 'package:get/get.dart';
 import 'package:untitled/util/image_resources.dart';
 
 class ProfileScreen extends StatelessWidget {
-  UserProfileController userProfileController =
-      Get.put(UserProfileController());
+  final UserProfileController userProfileController = Get.put(UserProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -52,82 +51,20 @@ class ProfileScreen extends StatelessWidget {
                         height: 120.h,
                         width: 120.w,
                         child: Obx(
-                              () => (userProfileController.isLoading.value)
+                          () => (userProfileController.isLoading.value)
                               ? SizedBox(
-                            child: CircularProgressIndicator(
-                              color: ColorRes.primaryColor,
-                            ),
-                          ): CustomNetworkImage(
-                                height: 120.h,
-                              width: 120.w,
-                              image: (userProfileController
-                                  .downloadURL.isEmpty)
-                                  ? AppPreference.getString(
-                                  AppString.userProfileUrl)
-                                  : userProfileController.downloadURL.value),
-                          //         Container(
-                          //     width: 120.h,
-                          //     height: 120.h,
-                          //     decoration: BoxDecoration(
-                          //       shape: BoxShape.circle,
-                          //       image: userProfileController.selectedfile.isEmpty
-                          //           ?  DecorationImage(
-                          //           fit: BoxFit.cover,
-                          //           image: (CustomNetworkImage(
-                          //             AppPreference.getString(AppString.userProfileUrl),
-                          //           )))
-                          //           : DecorationImage(
-                          //         fit: BoxFit.cover,
-                          //         image: FileImage(
-                          //           File(userProfileController
-                          //               .selectedfile.value ??
-                          //               ""),
-                          //         ),
-                          //       ),
-                          //     )
-                          // ),
+                                  child: CircularProgressIndicator(
+                                    color: ColorRes.primaryColor,
+                                  ),
+                                )
+                              : CustomNetworkImage(
+                                  height: 120.h,
+                                  width: 120.w,
+                                  image: (userProfileController.downloadURL.isEmpty)
+                                      ? AppPreference.getString(AppString.userProfileUrl)
+                                      : userProfileController.downloadURL.value),
                         ),
                       ),
-                      // Obx(
-                      //   () => (userProfileController.isLoading.value)
-                      //       ? SizedBox(
-                      //     height: 120.h,
-                      //     width: 120.w,
-                      //     child: CircularProgressIndicator(
-                      //             color: ColorRes.primaryColor,
-                      //           ),
-                      //       )
-                      //       : CustomNetworkImage(
-                      //           height: 120.h,
-                      //           width: 120.w,
-                      //           image: (userProfileController
-                      //                   .selectedfile.isEmpty)
-                      //               ? AppPreference.getString(
-                      //                   AppString.userProfileUrl)
-                      //               : userProfileController.downloadURL.value),
-                      //   //         Container(
-                      //   //     width: 120.h,
-                      //   //     height: 120.h,
-                      //   //     decoration: BoxDecoration(
-                      //   //       shape: BoxShape.circle,
-                      //   //       image: userProfileController.selectedfile.isEmpty
-                      //   //           ?  DecorationImage(
-                      //   //           fit: BoxFit.cover,
-                      //   //           image: (CustomNetworkImage(
-                      //   //             AppPreference.getString(AppString.userProfileUrl),
-                      //   //           )))
-                      //   //           : DecorationImage(
-                      //   //         fit: BoxFit.cover,
-                      //   //         image: FileImage(
-                      //   //           File(userProfileController
-                      //   //               .selectedfile.value ??
-                      //   //               ""),
-                      //   //         ),
-                      //   //       ),
-                      //   //     )
-                      //   // ),
-                      // ),
-                      // Image.file(profileController.selectedfile!)),
                       Positioned(
                         bottom: 1,
                         right: 8,
@@ -167,11 +104,6 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  // CustomNetworkImage(
-                  //   image: AppPreference.getString(AppString.userProfileUrl),
-                  //   height: 120.h,
-                  //   width: 120.w,
-                  // ),
                   SizedBox(
                     height: 12.h,
                   ),
@@ -186,7 +118,7 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: 33.h,
             ),
-            ProfilOption(
+            ProfileOption(
               imgIcon: IconRes.followingIcon,
               text: AppString.following,
               onTap: () {},
@@ -194,7 +126,7 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: 21.h,
             ),
-            ProfilOption(
+            ProfileOption(
               imgIcon: IconRes.settingIcon,
               text: AppString.setting,
               onTap: () {},
@@ -202,7 +134,7 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: 21.h,
             ),
-            ProfilOption(
+            ProfileOption(
               imgIcon: IconRes.privacyPolicyIcon,
               text: AppString.privacyPolicy,
               onTap: () {},
@@ -210,7 +142,7 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: 21.h,
             ),
-            ProfilOption(
+            ProfileOption(
               imgIcon: IconRes.termsOfUseIcon,
               text: AppString.termsOfUse,
               onTap: () {},
@@ -218,7 +150,7 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: 21.h,
             ),
-            ProfilOption(
+            ProfileOption(
               imgIcon: IconRes.helpIcon,
               text: AppString.helpCenter,
               onTap: () {},
@@ -226,7 +158,7 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: 21.h,
             ),
-            ProfilOption(
+            ProfileOption(
               imgIcon: IconRes.logOutIcon,
               text: AppString.logout,
               onTap: () {
@@ -243,7 +175,7 @@ class ProfileScreen extends StatelessWidget {
                         onPressed: () {
                           Get.back();
                         },
-                        child: Text(AppString.cancle)),
+                        child: Text(AppString.cancel)),
                   ],
                 );
                 showDialog(
@@ -254,37 +186,6 @@ class ProfileScreen extends StatelessWidget {
                 );
               },
             ),
-            // Center(
-            //   child: GestureDetector(
-            //       onTap: () {
-            //         AlertDialog alert = AlertDialog(
-            //           title: Text(AppString.logout),
-            //           content: Text(AppString.areYouSure),
-            //           actions: [
-            //             TextButton(
-            //                 onPressed: () {
-            //                   profileController.LogOut();
-            //                 },
-            //                 child: Text(AppString.logout)),
-            //             TextButton(
-            //                 onPressed: () {
-            //                   Get.back();
-            //                 },
-            //                 child: Text(AppString.cancle)),
-            //           ],
-            //         );
-            //         showDialog(
-            //           context: context,
-            //           builder: (BuildContext context) {
-            //             return alert;
-            //           },
-            //         );
-            //       },
-            //       child: Text(
-            //         "Log Out",
-            //         style: TextStyle(fontSize: 30.sp, color: Colors.red),
-            //       )),
-            // )
           ],
         ),
       ),

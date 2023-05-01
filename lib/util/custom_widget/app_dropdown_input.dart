@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppDropdownInput<T> extends StatelessWidget {
-   String hintText;
-   List<T> options;
-   T value;
-   String Function(T) getLabel;
+  String hintText;
+  List<T> options;
+  T value;
+  String Function(T) getLabel;
   ValueChanged<T?> onChanged;
 
   AppDropdownInput({
@@ -22,11 +22,9 @@ class AppDropdownInput<T> extends StatelessWidget {
       builder: (FormFieldState<T> state) {
         return InputDecorator(
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(
-                horizontal: 20.0, vertical: 15.0),
+            contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
             labelText: hintText,
-            border:
-            OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
           ),
           isEmpty: value == null || value == '',
           child: DropdownButtonHideUnderline(

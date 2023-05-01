@@ -17,6 +17,7 @@ class AppString{
   static String youAbleTOSetPass="Now you able to set new password";
   static String takeProfessional="Take Professional";
   static String or="OR";
+  static String addProfileImage="Add Profile Image";
   static String loginSuccessful="Log in successful";
   static String onBoardingValue="onBoardingValue";
   static String enterValidOtp="Please enter valid Otp";
@@ -55,15 +56,15 @@ class AppString{
   static String capSignUp="SIGN UP";
   static String otp="OTP";
   static String done="Done";
-  static String cancle="Cancle";
+  static String cancel="Cancel";
   static String follow="Follow";
   static String otpToVerify="Enter OTP to verify";
-  static String onBordIngLorem="Lorem ipsum dolor sit";
+  static String onBoardIngHeading="Lorem ipsum dolor sit";
   static String chooseRole="Choose Your Role";
   static String password="Password";
   static String confirmPassword="Confirm Password";
   static String forgetPassword="Forget Password?";
-  static String lorem="Posuere fringilla adipiscing tincidunt viverra nisi massa enim vestibulum. Eget amet enim nisi sit turpis tincidunt sit.i.";
+  static String onBoardingLorem="Posuere fringilla adipiscing tincidunt viverra nisi massa enim vestibulum. Eget amet enim nisi sit turpis tincidunt sit.i.";
   static String donTHaveAcc="Don't have a account? ";
   static String alreadyHaveAcc="Already have an account ";
   static String enterEmail="Enter Email to get otp";

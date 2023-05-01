@@ -3,6 +3,7 @@ import 'package:untitled/module/Home/screen/addservice_screen.dart';
 import 'package:untitled/module/Home/screen/cancle_request_screen.dart';
 import 'package:untitled/module/Home/screen/filter_screen.dart';
 import 'package:untitled/module/Home/screen/guideprofile_screen.dart';
+import 'package:untitled/module/Profile/screen/user_profile_screen.dart';
 import 'package:untitled/module/bottom_navbar/screen/bottomnav_bar.dart';
 import 'package:untitled/module/Home/screen/request_guide_screen.dart';
 import 'package:untitled/module/Home/screen/home_screen.dart';
@@ -41,6 +42,7 @@ mixin Routes {
   static const String cancelRequestScreen = '/cancelRequestScreen';
   static const String guideProfileScreen = '/guideProfileScreen';
   static const String filerScreen = '/filerScreen';
+  static const String profileScreen = '/profileScreen';
 
 
   static List<GetPage<dynamic>> pages = [
@@ -61,5 +63,6 @@ mixin Routes {
     GetPage(name: cancelRequestScreen, page: () =>  CancleRequestScreen()),
     GetPage(name: guideProfileScreen, page: () =>  GuideProfileScreen()),
     GetPage(name: filerScreen, page: () =>  FilterScreen()),
+    GetPage(name: profileScreen, page: () =>  ProfileScreen()),
   ];
 }

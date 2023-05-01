@@ -19,42 +19,49 @@ class choose_guide extends StatefulWidget {
 }
 
 class _choose_guideState extends State<choose_guide> {
-
-  ChooseController chooseController =Get.put(ChooseController());
+  final ChooseController chooseController = Get.put(ChooseController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(left: 20.0.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-           Expanded(
-               child: Column(
-             crossAxisAlignment: CrossAxisAlignment.start,
-             children: [
-               SizedBox(height: 78.67.h,),
-               GestureDetector(
-                   onTap:(){
-                     Get.back();
-                   },
-                   child: Image.asset(ImageRes.backButton)),
-               SizedBox(height: 21.67.h,),
-               CustomHeadText(name:AppString.lookingFor),
-               AppText(text:AppString.selectOne,
-                 fontSize: 16.sp,
-                 color: ColorRes.greyText,
-               ),
-               SizedBox(height: 36.h,),
-               Obx(() => Column(
-                 children: [
-                   Row(
-                     children: [
-                       GestureDetector(
-                       onTap: (){
-                         chooseController.isCheckedFirst.value = ! chooseController.isCheckedFirst.value;
-                       },
+        body: Padding(
+      padding: EdgeInsets.only(left: 20.0.w),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 78.67.h,
+              ),
+              GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Image.asset(ImageRes.backButton)),
+              SizedBox(
+                height: 21.67.h,
+              ),
+              CustomHeadText(name: AppString.lookingFor),
+              AppText(
+                text: AppString.selectOne,
+                fontSize: 16.sp,
+                color: ColorRes.greyText,
+              ),
+              SizedBox(
+                height: 36.h,
+              ),
+              Obx(
+                () => Column(
+                  children: [
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            chooseController.isCheckedFirst.value = !chooseController.isCheckedFirst.value;
+                          },
                           child: chooseController.isCheckedFirst.value == true
                               ? Image.asset(
                                   ImageRes.checkedBox,
@@ -65,62 +72,67 @@ class _choose_guideState extends State<choose_guide> {
                                   height: 24.h,
                                   width: 24.w,
                                   decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: ColorRes.greyText, width: 2.1.w),
+                                    border: Border.all(color: ColorRes.greyText, width: 2.1.w),
                                     borderRadius: BorderRadius.circular(8.r),
                                   ),
-
+                                ),
                         ),
-                       ),
-                        SizedBox(width: 8.w,),
-                       AppText(text :AppString.guideToHelpRunning,
-                         fontSize: 18.sp,
-                         fontFamily: AppString.fontPoppins,
-                       ),
-                     ],
-                   ),
-                   SizedBox(height: 10.0,),
-                   Row(
-                     children: [
-                       GestureDetector(
-                         onTap: (){
-                           chooseController.isCheckedSecond.value = ! chooseController.isCheckedSecond.value;
-                         },
-                         child: chooseController.isCheckedSecond.value == true
-                             ? Image.asset(
-                           ImageRes.checkedBox,
-                           height: 25.h,
-                           width: 25.w,
-                         )
-                             : Container(
-                           height: 24.h,
-                           width: 24.w,
-                           decoration: BoxDecoration(
-                             border: Border.all(
-                                 color: ColorRes.greyText, width: 2.1.w),
-                             borderRadius: BorderRadius.circular(8.r),
-                           ),
-
-                         ),
-                       ),
-                       SizedBox(width: 8.w,),
-                       AppText(text:AppString.someoneToGuide,
-                         fontSize: 18.sp,
-                         fontFamily: AppString.fontPoppins,
-                       ),
-                     ],
-                   ),
-                 ],
-               ),),
-             ],
-           )),
-               CustomButton(text: AppString.continueSpelling,
-                   onTap:(){
-                 Get.offAllNamed(Routes.bottomNavBarScreen);
-               })
-          ],
-        ),
-      )
-    );
+                        SizedBox(
+                          width: 8.w,
+                        ),
+                        AppText(
+                          text: AppString.guideToHelpRunning,
+                          fontSize: 18.sp,
+                          fontFamily: AppString.fontPoppins,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            chooseController.isCheckedSecond.value = !chooseController.isCheckedSecond.value;
+                          },
+                          child: chooseController.isCheckedSecond.value == true
+                              ? Image.asset(
+                                  ImageRes.checkedBox,
+                                  height: 25.h,
+                                  width: 25.w,
+                                )
+                              : Container(
+                                  height: 24.h,
+                                  width: 24.w,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: ColorRes.greyText, width: 2.1.w),
+                                    borderRadius: BorderRadius.circular(8.r),
+                                  ),
+                                ),
+                        ),
+                        SizedBox(
+                          width: 8.w,
+                        ),
+                        AppText(
+                          text: AppString.someoneToGuide,
+                          fontSize: 18.sp,
+                          fontFamily: AppString.fontPoppins,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          )),
+          CustomButton(
+              text: AppString.continueSpelling,
+              onTap: () {
+                Get.offAllNamed(Routes.bottomNavBarScreen);
+              })
+        ],
+      ),
+    ));
   }
 }

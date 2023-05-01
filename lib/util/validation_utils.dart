@@ -14,9 +14,7 @@ class AppValidator {
   }
   static String? userEmailValidation(String? value) {
     if (value!.isEmpty) {
-      return "Please enter password";
-    } else if (value!.length < 8) {
-      return "Please enter at Least 8 digit password";
+      return "Please enter your email";
     } else {
       return null;
     }

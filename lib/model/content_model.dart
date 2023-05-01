@@ -1,28 +1,28 @@
 import 'package:untitled/util/app_string.dart';
 import 'package:untitled/util/image_resources.dart';
 
-class OnbordingContent {
+class OnBoardingContent {
   String image;
   String title;
   String discription;
 
-  OnbordingContent({required this.image,required this.title,required this.discription});
+  OnBoardingContent({required this.image,required this.title,required this.discription});
 }
 
-List<OnbordingContent> contents = [
-  OnbordingContent(
-      title: AppString.onBordIngLorem,
+List<OnBoardingContent> contents = [
+  OnBoardingContent(
+      title: AppString.onBoardIngHeading,
       image: ImageRes.onBoarding,
-      discription: AppString.lorem
+      discription: AppString.onBoardingLorem
   ),
-  OnbordingContent(
-      title: AppString.onBordIngLorem,
+  OnBoardingContent(
+      title: AppString.onBoardIngHeading,
       image: ImageRes.onBoarding,
-      discription: AppString.lorem
+      discription: AppString.onBoardingLorem
   ),
-  OnbordingContent(
-      title: AppString.onBordIngLorem,
+  OnBoardingContent(
+      title: AppString.onBoardIngHeading,
       image: ImageRes.onBoarding,
-      discription: AppString.lorem
+      discription: AppString.onBoardingLorem
   ),
 ];

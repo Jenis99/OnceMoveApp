@@ -20,16 +20,15 @@ class RequestGuideScreen extends StatefulWidget {
 
 class _RequestGuideScreenState extends State<RequestGuideScreen> {
   var data;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    if(Get.arguments != null){
-      data =  Get.arguments;
+    if (Get.arguments != null) {
+      data = Get.arguments;
     }
   }
-  // GuidetDetailController guideDetailController =
-  //     Get.put(GuidetDetailController());
 
   @override
   Widget build(BuildContext context) {
@@ -59,59 +58,58 @@ class _RequestGuideScreenState extends State<RequestGuideScreen> {
                     ),
                     SizedBox(
                       height: 30.h,
-                    ), Column(
-                        children: [
-                          CustomNetworkImage(
-                              image: data["networkImage"] ??
-                        ImageRes.fifthGuiderImage,
-                      ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  AppText(
-                                    text:data["name"]??
-                                    "John",
-                                      fontSize: 22.sp,
-                                  ),
-                                  AppText(
-                                    text:data["distance"] ?? "13 km away",
-                                      fontSize: 19.sp,
-                                      fontFamily: AppString.fontInter,
-                                      color: ColorRes.greyText
-                                  ),
-                                  SizedBox(
-                                    height: 6.h,
-                                  ),
-                                  Row(
-                                    children: [
-                                      AppText(text: AppString.four,),
-                                      IconTheme(
-                                        data: IconThemeData(
-                                          color: Colors.amber,
-                                          size: 15,
-                                        ),
-                                        child: StarDisplay(value: 4),
+                    ),
+                    Column(
+                      children: [
+                        CustomNetworkImage(
+                          image: data["networkImage"] ?? ImageRes.fifthGuiderImage,
+                          width: 390.w,
+                          height: 222.h,
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                AppText(
+                                  text: data["name"] ?? "John",
+                                  fontSize: 22.sp,
+                                ),
+                                AppText(
+                                    text: data["distance"] ?? "13 km away",
+                                    fontSize: 19.sp,
+                                    fontFamily: AppString.fontInter,
+                                    color: ColorRes.greyText),
+                                SizedBox(
+                                  height: 6.h,
+                                ),
+                                Row(
+                                  children: [
+                                    AppText(
+                                      text: AppString.four,
+                                    ),
+                                    IconTheme(
+                                      data: IconThemeData(
+                                        color: Colors.amber,
+                                        size: 15,
                                       ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Image.asset(IconRes.msgIcon),
-                                  Image.asset(IconRes.callIcon)
-                                ],
-                              )
-                            ],
-                          )
-                        ],
-                      ),
+                                      child: StarDisplay(value: 4),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: [Image.asset(IconRes.msgIcon), Image.asset(IconRes.callIcon)],
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                     //Rating Bar
                     SizedBox(
                       height: 5.h,
@@ -120,8 +118,7 @@ class _RequestGuideScreenState extends State<RequestGuideScreen> {
                       padding: const EdgeInsets.only(right: 18.0).w,
                       child: Text(
                         AppString.serviceDetail,
-                        style: TextStyle(
-                            fontFamily: AppString.fontPoppins, fontSize: 20.sp),
+                        style: TextStyle(fontFamily: AppString.fontPoppins, fontSize: 20.sp),
                       ),
                     ),
                     SizedBox(
@@ -131,24 +128,17 @@ class _RequestGuideScreenState extends State<RequestGuideScreen> {
                       padding: const EdgeInsets.only(left: 10.0).w,
                       child: Text(
                         AppString.serviceLorem,
-                        style:
-                            TextStyle(fontSize: 16.sp, color: ColorRes.greyText),
+                        style: TextStyle(fontSize: 16.sp, color: ColorRes.greyText),
                       ),
                     ),
                     SizedBox(
                       height: 20.h,
                     ),
-                    AppText(
-                      text:AppString.location,
-                          fontSize: 20.sp, fontFamily: AppString.fontPoppins
-                    ),
+                    AppText(text: AppString.location, fontSize: 20.sp, fontFamily: AppString.fontPoppins),
                     SizedBox(
                       height: 8.h,
                     ),
-                    AppText(
-                      text:AppString.address,
-                          fontSize: 14.sp, fontFamily: AppString.fontPoppins
-                    ),
+                    AppText(text: AppString.address, fontSize: 14.sp, fontFamily: AppString.fontPoppins),
                     SizedBox(
                       height: 20.h,
                     ),
@@ -158,18 +148,14 @@ class _RequestGuideScreenState extends State<RequestGuideScreen> {
                         Column(
                           children: [
                             AppText(
-                              text:AppString.date,
-                                fontFamily: AppString.fontPoppins,
-                                fontSize: 20.sp,
+                              text: AppString.date,
+                              fontFamily: AppString.fontPoppins,
+                              fontSize: 20.sp,
                             ),
                             SizedBox(
                               height: 10.h,
                             ),
-                            AppText(
-                             text: AppString.dateFormat,
-                                  fontSize: 14.sp,
-                                  fontFamily: AppString.fontPoppins
-                            )
+                            AppText(text: AppString.dateFormat, fontSize: 14.sp, fontFamily: AppString.fontPoppins)
                           ],
                         ),
                         Padding(
@@ -177,18 +163,14 @@ class _RequestGuideScreenState extends State<RequestGuideScreen> {
                           child: Column(
                             children: [
                               AppText(
-                                text:AppString.time,
-                                  fontFamily: AppString.fontPoppins,
-                                  fontSize: 20.sp,
+                                text: AppString.time,
+                                fontFamily: AppString.fontPoppins,
+                                fontSize: 20.sp,
                               ),
                               SizedBox(
                                 height: 10.h,
                               ),
-                              AppText(
-                               text: AppString.seventeen,
-                                    fontSize: 14.sp,
-                                    fontFamily: AppString.fontPoppins
-                              )
+                              AppText(text: AppString.seventeen, fontSize: 14.sp, fontFamily: AppString.fontPoppins)
                             ],
                           ),
                         )
@@ -197,15 +179,12 @@ class _RequestGuideScreenState extends State<RequestGuideScreen> {
                     SizedBox(
                       height: 10.h,
                     ),
-                    AppText(
-                     text:AppString.typeOfRun,
-                          fontSize: 20.sp, fontFamily: AppString.fontPoppins
-                    ),
+                    AppText(text: AppString.typeOfRun, fontSize: 20.sp, fontFamily: AppString.fontPoppins),
                     SizedBox(
                       height: 8.h,
                     ),
                     AppText(
-                     text: AppString.longLessHour,
+                      text: AppString.longLessHour,
                     ),
                   ],
                 ),
@@ -214,11 +193,11 @@ class _RequestGuideScreenState extends State<RequestGuideScreen> {
                 padding: EdgeInsets.only(bottom: 10.h),
                 child: CustomButton(
                     onTap: () {
-                       Get.toNamed(Routes.addServiceScreen,arguments: {
-                         "networkImage":data["networkImage"],
-                         "name":data["name"],
-                         "distance":data["distance"],
-                       });
+                      Get.toNamed(Routes.addServiceScreen, arguments: {
+                        "networkImage": data["networkImage"],
+                        "name": data["name"],
+                        "distance": data["distance"],
+                      });
                     },
                     text: AppString.request),
               )

@@ -8,44 +8,38 @@ import 'package:untitled/util/helper/app_preferences.dart';
 import 'package:untitled/util/routes.dart';
 
 class SignUpController extends GetxController {
-
   TextEditingController email = TextEditingController();
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirm = TextEditingController();
-  RxBool isLoading=false.obs;
+  RxBool isLoading = false.obs;
 
   final signUpFormKey = GlobalKey<FormState>();
 
-
-  Singup()async {
-    if(password.text==confirm.text){
+  Singup() async {
+    if (password.text == confirm.text) {
       isLoading(true);
-      await FirebaseFirestore.instance.collection("UserDetail").where("email",isEqualTo: email.text.trim()).get().then((value){
-        if(value.docs.isEmpty){
+      await FirebaseFirestore.instance.collection("UserDetail").where("email", isEqualTo: email.text.trim()).get().then((value) {
+        if (value.docs.isEmpty) {
           FirebaseFirestore.instance.collection("UserDetail").add({
-            "email":email.text.trim(),
-            "username":username.text,
-            "password":password.text.trim(),
+            "email": email.text.trim(),
+            "username": username.text,
+            "password": password.text.trim(),
           }).then((value) async {
             isLoading(false);
-            AppPreference.setString(AppConstant.userId,value.id );
+            AppPreference.setString(AppConstant.userId, value.id);
 
             Get.toNamed(Routes.profileImage);
-            AppSnackBar(title: AppString.successful,subtitle:  AppString.accCreateSuccess);
+            AppSnackBar(title: AppString.successful, subtitle: AppString.accCreateSuccess);
             AppPreference.setBoolean(AppString.isLogin, value: true);
           });
-
-        }
-        else{
+        } else {
           isLoading(false);
           AppSnackBar(title: AppString.error, subtitle: AppString.emailAlreadyExits);
         }
       });
-    }
-    else{
+    } else {
       AppSnackBar(title: AppString.error, subtitle: AppString.passwordNotMatch);
     }
   }
-
 }
